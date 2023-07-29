@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, TextStyle } from 'react-native';
 
 type Component = {
-  style?: TextStyle;
+  style?: TextStyle | TextStyle[];
   children: string;
 };
 
