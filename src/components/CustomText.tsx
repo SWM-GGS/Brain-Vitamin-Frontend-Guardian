@@ -17,5 +17,6 @@ export const CustomText: React.FC<Component> = ({ children, ...props }) => {
 const styles = StyleSheet.create({
   defaultFontText: {
     fontFamily: 'Pretendard-Regular',
+    fontSize: 16,
   },
 });
