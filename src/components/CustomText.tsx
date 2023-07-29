@@ -18,5 +18,6 @@ const styles = StyleSheet.create({
   defaultFontText: {
     fontFamily: 'Pretendard-Regular',
     fontSize: 16,
+    color: '#1F1411',
   },
 });
