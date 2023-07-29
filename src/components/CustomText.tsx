@@ -3,7 +3,7 @@ import { StyleSheet, Text, TextStyle } from 'react-native';
 
 type Component = {
   style?: TextStyle | TextStyle[];
-  children: string;
+  children: string | string[];
 };
 
 export const CustomText: React.FC<Component> = ({ children, ...props }) => {
