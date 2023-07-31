@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { CustomText as Text } from '../components/CustomText';
-import Kakao from '../assets/kakao.svg';
+import Kakao from '../assets/images/kakao.svg';
 import { AuthStackParamList } from '../stackNav/Auth';
 
 type LogInScreenProps = NativeStackScreenProps<AuthStackParamList, 'LogIn'>;

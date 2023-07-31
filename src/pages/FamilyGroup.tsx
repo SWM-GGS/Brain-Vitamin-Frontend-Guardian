@@ -4,7 +4,7 @@ import { CustomText as Text } from '../components/CustomText';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { FamilyGroupScreenStackParamList } from '../stackNav/FamilyGroupScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Plus from '../assets/plus.svg';
+import Plus from '../assets/images/plus.svg';
 
 type FamilyGroupScreenProps = NativeStackScreenProps<
   FamilyGroupScreenStackParamList,

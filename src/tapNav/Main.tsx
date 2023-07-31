@@ -5,13 +5,13 @@ import NeighborScreen from '../stackNav/NeighborScreen';
 import HomeScreen from '../stackNav/HomeScreem';
 import PatientScreen from '../stackNav/PatientScreen';
 import MyPageScreen from '../stackNav/MyPageScreen';
-import FamilyIcon from '../assets/family.svg';
-import HomeFocusedIcon from '../assets/homeFocused.svg';
-import HomeIcon from '../assets/home.svg';
-import PatientFocusedIcon from '../assets/patientFocused.svg';
-import PatientIcon from '../assets/patient.svg';
-import MyPageFocusedIcon from '../assets/myPageFocused.svg';
-import MyPageIcon from '../assets/myPage.svg';
+import FamilyIcon from '../assets/images/family.svg';
+import HomeFocusedIcon from '../assets/images/homeFocused.svg';
+import HomeIcon from '../assets/images/home.svg';
+import PatientFocusedIcon from '../assets/images/patientFocused.svg';
+import PatientIcon from '../assets/images/patient.svg';
+import MyPageFocusedIcon from '../assets/images/myPageFocused.svg';
+import MyPageIcon from '../assets/images/myPage.svg';
 
 export type MainParamList = {
   FamilyScreen: undefined;

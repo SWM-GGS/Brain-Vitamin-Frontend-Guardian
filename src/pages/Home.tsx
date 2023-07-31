@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
-import Pill from '../assets/pill.svg';
+import Pill from '../assets/images/pill.svg';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeScreenStackParamList } from '../stackNav/HomeScreem';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -11,7 +11,7 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import ArrowRight from '../assets/arrowRight.svg';
+import ArrowRight from '../assets/images/arrowRight.svg';
 
 type HomeScreenProps = NativeStackNavigationProp<
   HomeScreenStackParamList,

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ProfileImage from '../assets/myPage.svg';
+import ProfileImage from '../assets/images/myPage.svg';
 import { CustomText as Text } from '../components/CustomText';
-import EmotionImage from '../assets/emotion.svg';
+import EmotionImage from '../assets/images/emotion.svg';
 import { FamilyScreenStackParamList } from '../stackNav/FamilyScreen';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
