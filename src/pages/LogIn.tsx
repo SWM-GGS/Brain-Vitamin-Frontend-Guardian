@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../../AppInner';
 import { CustomText as Text } from '../components/CustomText';
 import Kakao from '../assets/kakao.svg';
+import { AuthStackParamList } from '../stackNav/Auth';
 
-type LogInScreenProps = NativeStackScreenProps<RootStackParamList, 'LogIn'>;
+type LogInScreenProps = NativeStackScreenProps<AuthStackParamList, 'LogIn'>;
 
 function LogIn({ navigation }: LogInScreenProps) {
   const toSignUp = useCallback(() => {
-    navigation.navigate('SignUp');
+    navigation.navigate('SignUpScreen');
   }, [navigation]);
 
   return (

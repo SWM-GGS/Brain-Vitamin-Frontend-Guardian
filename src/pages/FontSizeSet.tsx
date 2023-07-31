@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
 
-function SignUp() {
+function FontSizeSet() {
   return (
     <View style={styles.container}>
       <View style={styles.body}>
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignUp;
+export default FontSizeSet;

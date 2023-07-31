@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
 import { RootState } from './src/store/reducer';
@@ -10,28 +9,16 @@ import { Alert } from 'react-native';
 import userSlice from './src/slices/user';
 import { useAppDispatch } from './src/store';
 import Config from 'react-native-config';
-import LogIn from './src/pages/LogIn';
-import SignUp from './src/pages/SignUp';
-import Family from './src/pages/Family';
-import Neighbor from './src/pages/Neighbor';
-import Home from './src/pages/Home';
-import Patient from './src/pages/Patient';
-import MyPage from './src/pages/MyPage';
-
-export type LoggedInParamList = {
-  Family: { familyKey: string };
-  Neighbor: undefined;
-  Home: undefined;
-  Patient: { familyKey: string };
-  MyPage: undefined;
-};
+import Splash from './src/pages/Splash';
+import Auth from './src/stackNav/Auth';
+import Main from './src/tapNav/Main';
 
 export type RootStackParamList = {
-  LogIn: undefined;
-  SignUp: undefined;
+  Splash: undefined;
+  Auth: undefined;
+  Main: undefined;
 };
 
-const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function AppInner() {
@@ -112,42 +99,19 @@ function AppInner() {
     );
   }, [dispatch]);
 
-  return isLoggedIn ? (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Family"
-        component={Family}
-        options={{ title: '가족' }}
-      />
-      <Tab.Screen
-        name="Neighbor"
-        component={Neighbor}
-        options={{ title: '이웃' }}
-      />
-      <Tab.Screen name="Home" component={Home} options={{ title: '홈' }} />
-      <Tab.Screen
-        name="Patient"
-        component={Patient}
-        options={{ title: '환자' }}
-      />
-      <Tab.Screen
-        name="MyPage"
-        component={MyPage}
-        options={{ title: '마이페이지' }}
-      />
-    </Tab.Navigator>
-  ) : (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="LogIn"
-        component={LogIn}
-        options={{ title: '로그인' }}
-      />
-      <Stack.Screen
-        name="SignUp"
-        component={SignUp}
-        options={{ title: '회원가입' }}
-      />
+  return (
+    <Stack.Navigator
+      initialRouteName="Splash"
+      screenOptions={{ headerShown: false }}>
+      {/* <Stack.Screen
+        name="Splash"
+        component={Splash}
+      /> */}
+      {!isLoggedIn ? (
+        <Stack.Screen name="Auth" component={Auth} />
+      ) : (
+        <Stack.Screen name="Main" component={Main} />
+      )}
     </Stack.Navigator>
   );
 }
