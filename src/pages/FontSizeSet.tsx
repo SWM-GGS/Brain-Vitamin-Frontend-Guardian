@@ -1,8 +1,16 @@
 import React from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { SignUpStepStackParamList } from '../stackNav/SignUpStep';
 
-function FontSizeSet() {
+type Props = NativeStackScreenProps<SignUpStepStackParamList, 'FontSizeSet'>;
+
+function FontSizeSet({ navigation }: Props) {
+  const toPhoneNumberSet = () => {
+    navigation.navigate('PhoneNumberSet');
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.body}>
@@ -23,7 +31,9 @@ function FontSizeSet() {
         </Pressable>
       </View>
       <View style={styles.buttonWrapper}>
-        <Pressable style={[styles.button, styles.nextButton]}>
+        <Pressable
+          style={[styles.button, styles.nextButton]}
+          onPress={toPhoneNumberSet}>
           <Text style={[styles.text, styles.nextText]}>다음</Text>
         </Pressable>
       </View>
