@@ -5,6 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { SignUpScreenStackParamList } from '../stackNav/SignUpScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProgressStep from '../components/ProgressStep';
+import Header from '../components/Header';
 
 type Props = NativeStackScreenProps<SignUpScreenStackParamList>;
 
@@ -18,6 +19,7 @@ function NameSet({ navigation }: Props) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header label="회원가입" />
       <ProgressStep currentStep={3} />
       <View style={styles.body}>
         <View style={styles.section}>
@@ -28,6 +30,7 @@ function NameSet({ navigation }: Props) {
               {
                 borderWidth: isNameFocused ? 1 : undefined,
                 borderColor: isNameFocused ? '#FF9432' : undefined,
+                backgroundColor: isNameFocused ? '#FFFFFF' : '#F4F4F4',
               },
             ]}>
             <Text
@@ -54,6 +57,7 @@ function NameSet({ navigation }: Props) {
               {
                 borderWidth: isNicknameFocused ? 1 : undefined,
                 borderColor: isNicknameFocused ? '#FF9432' : undefined,
+                backgroundColor: isNicknameFocused ? '#FFFFFF' : '#F4F4F4',
               },
             ]}>
             <Text

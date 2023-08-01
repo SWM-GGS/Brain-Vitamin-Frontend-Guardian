@@ -7,9 +7,14 @@ import NameSet from '../pages/NameSet';
 
 export type SignUpStepStackParamList = {
   FontSizeSet: undefined;
-  PhoneNumberSet: undefined;
-  BirthDateSet: undefined;
-  NameSet: undefined;
+  PhoneNumberSet: { fontSize: string };
+  BirthDateSet: { fontSize: string; phoneNumber: string };
+  NameSet: {
+    fontSize: string;
+    phoneNumber: string;
+    birthDate: string;
+    gender: string;
+  };
 };
 
 const SignUpStepStack = createNativeStackNavigator<SignUpStepStackParamList>();

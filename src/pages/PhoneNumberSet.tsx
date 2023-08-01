@@ -5,19 +5,25 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { SignUpStepStackParamList } from '../stackNav/SignUpStep';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProgressStep from '../components/ProgressStep';
+import Header from '../components/Header';
 
 type Props = NativeStackScreenProps<SignUpStepStackParamList, 'PhoneNumberSet'>;
 
-function PhoneNumberSet({ navigation }: Props) {
+function PhoneNumberSet({ navigation, route }: Props) {
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [isCodeFocused, setIsCodeFocused] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   const toBirthDateSet = () => {
-    navigation.navigate('BirthDateSet');
+    navigation.navigate('BirthDateSet', {
+      fontSize: route.params.fontSize,
+      phoneNumber,
+    });
   };
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header label="회원가입" />
       <ProgressStep currentStep={1} />
       <View style={styles.body}>
         <Text style={[styles.text, styles.label]}>전화번호를 입력해주세요</Text>
@@ -28,6 +34,7 @@ function PhoneNumberSet({ navigation }: Props) {
               {
                 borderWidth: isPhoneFocused ? 1 : undefined,
                 borderColor: isPhoneFocused ? '#FF9432' : undefined,
+                backgroundColor: isPhoneFocused ? '#FFFFFF' : '#F4F4F4',
               },
             ]}>
             <Text
@@ -43,6 +50,7 @@ function PhoneNumberSet({ navigation }: Props) {
               placeholderTextColor={'#939393'}
               onFocus={() => setIsPhoneFocused(true)}
               onBlur={() => setIsPhoneFocused(false)}
+              onChangeText={text => setPhoneNumber(text)}
             />
           </View>
           <Pressable style={styles.certificateButton}>
@@ -55,6 +63,7 @@ function PhoneNumberSet({ navigation }: Props) {
             {
               borderWidth: isCodeFocused ? 1 : undefined,
               borderColor: isCodeFocused ? '#FF9432' : undefined,
+              backgroundColor: isCodeFocused ? '#FFFFFF' : '#F4F4F4',
             },
           ]}>
           <Text
@@ -139,14 +148,12 @@ const styles = StyleSheet.create({
   codeInputBox: {
     height: 57,
     borderRadius: 8,
-    backgroundColor: '#F4F4F4',
     padding: 10,
   },
   inputBox: {
     width: 240,
     height: 57,
     borderRadius: 8,
-    backgroundColor: '#F4F4F4',
     padding: 10,
   },
   inputLabel: {

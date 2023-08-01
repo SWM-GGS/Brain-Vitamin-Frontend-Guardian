@@ -41,7 +41,18 @@ function ProgressStep({ currentStep }: Props) {
           ]}>
           <Text style={styles.circleText}>1</Text>
         </View>
-        <Text style={styles.stepText}>전화번호</Text>
+        <Text
+          style={[
+            styles.stepText,
+            {
+              color:
+                currentStep === 1 || currentStep === 2 || currentStep === 3
+                  ? '#FF9432'
+                  : '#6D6B69',
+            },
+          ]}>
+          전화번호
+        </Text>
       </View>
       <View style={styles.step}>
         <View
@@ -54,7 +65,16 @@ function ProgressStep({ currentStep }: Props) {
           ]}>
           <Text style={styles.circleText}>2</Text>
         </View>
-        <Text style={styles.stepText}>나이 및 성별</Text>
+        <Text
+          style={[
+            styles.stepText,
+            {
+              color:
+                currentStep === 2 || currentStep === 3 ? '#FF9432' : '#6D6B69',
+            },
+          ]}>
+          나이 및 성별
+        </Text>
       </View>
       <View style={styles.step}>
         <View
@@ -64,7 +84,15 @@ function ProgressStep({ currentStep }: Props) {
           ]}>
           <Text style={styles.circleText}>3</Text>
         </View>
-        <Text style={styles.stepText}>이름 입력</Text>
+        <Text
+          style={[
+            styles.stepText,
+            {
+              color: currentStep === 3 ? '#FF9432' : '#6D6B69',
+            },
+          ]}>
+          이름 입력
+        </Text>
       </View>
     </View>
   );
@@ -119,7 +147,6 @@ const styles = StyleSheet.create({
   stepText: {
     fontSize: 14,
     fontFamily: 'Pretendard-Medium',
-    color: '#6D6B69',
     marginTop: 9,
   },
 });

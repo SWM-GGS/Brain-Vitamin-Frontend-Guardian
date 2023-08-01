@@ -5,19 +5,27 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { SignUpStepStackParamList } from '../stackNav/SignUpStep';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProgressStep from '../components/ProgressStep';
+import Header from '../components/Header';
 
 type Props = NativeStackScreenProps<SignUpStepStackParamList, 'BirthDateSet'>;
 
-function BirthDateSet({ navigation }: Props) {
+function BirthDateSet({ navigation, route }: Props) {
   const [isBirthDateFocused, setIsBirthDateFocused] = useState(false);
+  const [birthDate, setBirthDate] = useState('');
   const [gender, setGender] = useState('');
 
   const toNameSet = () => {
-    navigation.navigate('NameSet');
+    navigation.navigate('NameSet', {
+      fontSize: route.params.fontSize,
+      phoneNumber: route.params.phoneNumber,
+      birthDate,
+      gender,
+    });
   };
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header label="회원가입" />
       <ProgressStep currentStep={2} />
       <View style={styles.body}>
         <View style={styles.section}>
@@ -30,6 +38,7 @@ function BirthDateSet({ navigation }: Props) {
               {
                 borderWidth: isBirthDateFocused ? 1 : undefined,
                 borderColor: isBirthDateFocused ? '#FF9432' : undefined,
+                backgroundColor: isBirthDateFocused ? '#FFFFFF' : '#F4F4F4',
               },
             ]}>
             <Text
@@ -45,6 +54,7 @@ function BirthDateSet({ navigation }: Props) {
               placeholderTextColor={'#939393'}
               onFocus={() => setIsBirthDateFocused(true)}
               onBlur={() => setIsBirthDateFocused(false)}
+              onChangeText={setBirthDate}
             />
           </View>
         </View>
