@@ -92,13 +92,9 @@ function BirthDateSet({ navigation, route }: Props) {
           </View>
         </View>
       </View>
-      <View style={styles.buttonWrapper}>
-        <Pressable
-          style={[styles.button, styles.nextButton]}
-          onPress={toNameSet}>
-          <Text style={[styles.text, styles.nextText]}>다음</Text>
-        </Pressable>
-      </View>
+      <Pressable style={styles.nextButton} onPress={toNameSet}>
+        <Text style={[styles.text, styles.nextText]}>다음</Text>
+      </Pressable>
     </SafeAreaView>
   );
 }
@@ -119,19 +115,6 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'Pretendard-Bold',
     fontWeight: '700',
-  },
-  buttonWrapper: {
-    marginBottom: 22,
-  },
-  button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16.5,
-    borderRadius: 11,
-  },
-  nextButton: { backgroundColor: '#FF9432' },
-  nextText: {
-    color: '#FFFFFF',
   },
   input: { fontSize: 16 },
   birthDateInputBox: {
@@ -166,6 +149,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
+  },
+  nextButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 16.5,
+    borderRadius: 11,
+    backgroundColor: '#FF9432',
+  },
+  nextText: {
+    color: '#FFFFFF',
   },
 });
 
