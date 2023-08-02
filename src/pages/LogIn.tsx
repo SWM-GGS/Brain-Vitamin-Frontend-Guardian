@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { CustomText as Text } from '../components/CustomText';
 import Kakao from '../assets/images/kakao.svg';
 import { AuthStackParamList } from '../stackNav/Auth';
+import Logo from '../assets/images/logo.svg';
 
 type LogInScreenProps = NativeStackScreenProps<AuthStackParamList, 'LogIn'>;
 
@@ -15,7 +16,7 @@ function LogIn({ navigation }: LogInScreenProps) {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Text>로고</Text>
+        <Logo width={320} />
       </View>
       <View style={styles.buttonWrapper}>
         <Pressable style={[styles.button, styles.kakaoButton]}>
