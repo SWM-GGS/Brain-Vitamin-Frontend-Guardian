@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FamilyScreen from '../stackNav/FamilyScreen';
 import NeighborScreen from '../stackNav/NeighborScreen';
-import HomeScreen from '../stackNav/HomeScreem';
+import HomeScreen from '../stackNav/HomeScreen';
 import PatientScreen from '../stackNav/PatientScreen';
 import MyPageScreen from '../stackNav/MyPageScreen';
 import FamilyIcon from '../assets/images/family.svg';

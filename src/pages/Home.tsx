@@ -3,7 +3,7 @@ import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
 import Pill from '../assets/images/pill.svg';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { HomeScreenStackParamList } from '../stackNav/HomeScreem';
+import { HomeScreenStackParamList } from '../stackNav/HomeScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MainParamList } from '../tapNav/Main';
 import {
