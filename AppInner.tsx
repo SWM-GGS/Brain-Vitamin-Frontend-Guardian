@@ -108,7 +108,10 @@ function AppInner() {
         component={Splash}
       /> */}
       {!isLoggedIn ? (
-        <Stack.Screen name="Auth" component={Auth} />
+        <Stack.Group>
+          <Stack.Screen name="Auth" component={Auth} />
+          <Stack.Screen name="Main" component={Main} />
+        </Stack.Group>
       ) : (
         <Stack.Screen name="Main" component={Main} />
       )}

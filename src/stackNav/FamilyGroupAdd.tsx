@@ -5,7 +5,7 @@ import Relationship from '../pages/Relationship';
 
 export type FamilyGroupAddStackParamList = {
   FamilyKey: undefined;
-  Relationship: undefined;
+  Relationship: { familyId: number; familyName: string };
 };
 
 const FamilyGroupAddStack =
