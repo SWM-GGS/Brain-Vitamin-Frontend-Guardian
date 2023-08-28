@@ -6,7 +6,7 @@ const initialState = {
   phoneNumber: '',
   familyKey: '',
   familyName: '',
-  fontSize: '',
+  fontSize: 2,
   profileImgUrl: '',
   accessToken: '',
 };
