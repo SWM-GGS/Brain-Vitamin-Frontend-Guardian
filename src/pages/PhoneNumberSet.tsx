@@ -9,14 +9,13 @@ import Header from '../components/Header';
 
 type Props = NativeStackScreenProps<SignUpStepStackParamList, 'PhoneNumberSet'>;
 
-function PhoneNumberSet({ navigation, route }: Props) {
+function PhoneNumberSet({ navigation }: Props) {
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
   const [isCodeFocused, setIsCodeFocused] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const toBirthDateSet = () => {
     navigation.navigate('BirthDateSet', {
-      fontSize: route.params.fontSize,
       phoneNumber,
     });
   };
