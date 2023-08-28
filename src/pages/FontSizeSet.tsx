@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { SignUpStepStackParamList } from '../stackNav/SignUpStep';
-import Header from '../components/Header';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useAppDispatch } from '../store';
+import userSlice from '../slices/user';
+import { setFirstRun } from '../utils/firstRun';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../AppInner';
 
-type Props = NativeStackScreenProps<SignUpStepStackParamList, 'FontSizeSet'>;
+type Props = NativeStackNavigationProp<RootStackParamList, 'FontSizeSet'>;
 
-function FontSizeSet({ navigation }: Props) {
-  const [fontSize, setFontSize] = useState('');
+function FontSizeSet() {
+  const navigation = useNavigation<Props>();
+  const [fontSize, setFontSize] = useState(2);
+  const dispatch = useAppDispatch();
 
-  const toPhoneNumberSet = () => {
-    navigation.navigate('PhoneNumberSet', { fontSize });
+  const toAuth = () => {
+    dispatch(userSlice.actions.setFontSize(fontSize));
+    setFirstRun();
+    navigation.navigate('Auth');
   };
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header label="회원가입" />
       <View style={styles.body}>
         <Text style={[styles.text, styles.label]}>
           글자 크기를 설정해주세요
@@ -26,43 +32,43 @@ function FontSizeSet({ navigation }: Props) {
           style={[
             styles.fontButton,
             {
-              backgroundColor: fontSize === 'big' ? '#FFF5EC' : '#FFFFFF',
-              borderWidth: fontSize === 'big' ? 1 : undefined,
-              borderColor: fontSize === 'big' ? '#FF9432' : undefined,
+              backgroundColor: fontSize === 3 ? '#FFF5EC' : '#FFFFFF',
+              borderWidth: fontSize === 3 ? 1 : undefined,
+              borderColor: fontSize === 3 ? '#FF9432' : undefined,
             },
           ]}
-          onPress={() => setFontSize('big')}>
-          <Text style={[styles.text, styles.option, styles.big]}>크게</Text>
-          <Text style={styles.big}>잘했고, 잘해왔고, 잘할 거야</Text>
+          onPress={() => setFontSize(3)}>
+          <Text style={[styles.text, styles.option, styles.large]}>크게</Text>
+          <Text style={styles.large}>잘했고, 잘해왔고, 잘할 거야</Text>
         </Pressable>
         <Pressable
           style={[
             styles.fontButton,
             {
-              backgroundColor: fontSize === 'normal' ? '#FFF5EC' : '#FFFFFF',
-              borderWidth: fontSize === 'normal' ? 1 : undefined,
-              borderColor: fontSize === 'normal' ? '#FF9432' : undefined,
+              backgroundColor: fontSize === 2 ? '#FFF5EC' : '#FFFFFF',
+              borderWidth: fontSize === 2 ? 1 : undefined,
+              borderColor: fontSize === 2 ? '#FF9432' : undefined,
             },
           ]}
-          onPress={() => setFontSize('normal')}>
-          <Text style={[styles.text, styles.option, styles.normal]}>보통</Text>
-          <Text style={styles.normal}>잘했고, 잘해왔고, 잘할 거야</Text>
+          onPress={() => setFontSize(2)}>
+          <Text style={[styles.text, styles.option, styles.medium]}>보통</Text>
+          <Text style={styles.medium}>잘했고, 잘해왔고, 잘할 거야</Text>
         </Pressable>
         <Pressable
           style={[
             styles.fontButton,
             {
-              backgroundColor: fontSize === 'small' ? '#FFF5EC' : '#FFFFFF',
-              borderWidth: fontSize === 'small' ? 1 : undefined,
-              borderColor: fontSize === 'small' ? '#FF9432' : undefined,
+              backgroundColor: fontSize === 1 ? '#FFF5EC' : '#FFFFFF',
+              borderWidth: fontSize === 1 ? 1 : undefined,
+              borderColor: fontSize === 1 ? '#FF9432' : undefined,
             },
           ]}
-          onPress={() => setFontSize('small')}>
+          onPress={() => setFontSize(1)}>
           <Text style={[styles.text, styles.option]}>작게</Text>
           <Text style={styles.small}>잘했고, 잘해왔고, 잘할 거야</Text>
         </Pressable>
       </View>
-      <Pressable style={styles.nextButton} onPress={toPhoneNumberSet}>
+      <Pressable style={styles.nextButton} onPress={toAuth}>
         <Text style={[styles.text, styles.nextText]}>다음</Text>
       </Pressable>
     </SafeAreaView>
@@ -106,10 +112,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginBottom: 19,
   },
-  big: {
+  large: {
     fontSize: 20,
   },
-  normal: {
+  medium: {
     fontSize: 18,
   },
   small: {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
 import { RootState } from './src/store/reducer';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import EncryptedStorage from 'react-native-encrypted-storage';
 import axios, { AxiosError } from 'axios';
 import { Alert } from 'react-native';
@@ -12,9 +12,12 @@ import Config from 'react-native-config';
 import Splash from './src/pages/Splash';
 import Auth from './src/stackNav/Auth';
 import Main from './src/tapNav/Main';
+import { checkIsFirstRun } from './src/utils/firstRun';
+import FontSizeSet from './src/pages/FontSizeSet';
 
 export type RootStackParamList = {
   Splash: undefined;
+  FontSizeSet: undefined;
   Auth: undefined;
   Main: undefined;
 };
@@ -26,7 +29,15 @@ function AppInner() {
   const isLoggedIn = useSelector(
     (state: RootState) => !!state.user.phoneNumber,
   );
-  console.log('isLoggedIn', isLoggedIn);
+  const [isFirstRun, setIsFirstRun] = useState(false);
+
+  useEffect(() => {
+    const getFirstRunStatus = async () => {
+      const firstRunStatus = await checkIsFirstRun();
+      setIsFirstRun(firstRunStatus);
+    };
+    getFirstRunStatus();
+  }, []);
 
   // 앱 실행 시 refreshToken 있으면 자동 로그인
   useEffect(() => {
@@ -100,20 +111,18 @@ function AppInner() {
   }, [dispatch]);
 
   return (
-    <Stack.Navigator
-      initialRouteName="Splash"
-      screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen
-        name="Splash"
-        component={Splash}
-      /> */}
-      {!isLoggedIn ? (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      {/* <Stack.Screen name="Splash" component={Splash} /> */}
+      {isLoggedIn ? (
+        <Stack.Screen name="Main" component={Main} />
+      ) : (
         <Stack.Group>
+          {isFirstRun && (
+            <Stack.Screen name="FontSizeSet" component={FontSizeSet} />
+          )}
           <Stack.Screen name="Auth" component={Auth} />
           <Stack.Screen name="Main" component={Main} />
         </Stack.Group>
-      ) : (
-        <Stack.Screen name="Main" component={Main} />
       )}
     </Stack.Navigator>
   );

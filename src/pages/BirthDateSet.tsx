@@ -16,7 +16,6 @@ function BirthDateSet({ navigation, route }: Props) {
 
   const toNameSet = () => {
     navigation.navigate('NameSet', {
-      fontSize: route.params.fontSize,
       phoneNumber: route.params.phoneNumber,
       birthDate,
       gender,
