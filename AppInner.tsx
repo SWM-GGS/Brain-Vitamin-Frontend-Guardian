@@ -9,11 +9,11 @@ import { Alert } from 'react-native';
 import userSlice from './src/slices/user';
 import { useAppDispatch } from './src/store';
 import Config from 'react-native-config';
-import Splash from './src/pages/Splash';
+import Splash from './src/screens/Splash';
 import Auth from './src/stackNav/Auth';
 import Main from './src/tapNav/Main';
 import { checkIsFirstRun } from './src/utils/firstRun';
-import FontSizeSet from './src/pages/FontSizeSet';
+import FontSizeSet from './src/screens/FontSizeSet';
 
 export type RootStackParamList = {
   Splash: undefined;

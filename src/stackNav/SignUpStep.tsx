@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import PhoneNumberSet from '../pages/PhoneNumberSet';
-import BirthDateSet from '../pages/BirthDateSet';
-import NameSet from '../pages/NameSet';
+import PhoneNumberSet from '../screens/PhoneNumberSet';
+import BirthDateSet from '../screens/BirthDateSet';
+import NameSet from '../screens/NameSet';
 
 export type SignUpStepStackParamList = {
   PhoneNumberSet: undefined;

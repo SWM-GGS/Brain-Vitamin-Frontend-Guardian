@@ -1,11 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Family from '../pages/Family';
-import FamilyPostRead from '../pages/FamilyPostRead';
-import FamilyPostEdit from '../pages/FamilyGroupEdit';
-import FamilyPostWrite from '../pages/FamilyPostWrite';
-import VitaminWrite from '../pages/VitaminWrite';
-import VitaminEdit from '../pages/VitaminEdit';
+import Family from '../screens/Family';
+import FamilyPostRead from '../screens/FamilyPostRead';
+import FamilyPostEdit from '../screens/FamilyGroupEdit';
+import FamilyPostWrite from '../screens/FamilyPostWrite';
+import VitaminWrite from '../screens/VitaminWrite';
+import VitaminEdit from '../screens/VitaminEdit';
 
 export type FamilyScreenStackParamList = {
   Family: undefined;

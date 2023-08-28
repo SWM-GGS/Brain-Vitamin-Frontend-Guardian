@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Vitamin from '../pages/Vitamin';
-import VitaminWrite from '../pages/VitaminWrite';
-import VitaminEdit from '../pages/VitaminEdit';
+import Vitamin from '../screens/Vitamin';
+import VitaminWrite from '../screens/VitaminWrite';
+import VitaminEdit from '../screens/VitaminEdit';
 
 export type VitaminScreenStackParamList = {
   Vitamin: undefined;

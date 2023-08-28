@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Patient from '../pages/Patient';
-import PatientActivity from '../pages/PatientActivity';
-import PatientAnalyze from '../pages/PatientAnalyze';
+import Patient from '../screens/Patient';
+import PatientActivity from '../screens/PatientActivity';
+import PatientAnalyze from '../screens/PatientAnalyze';
 
 export type PatientScreenStackParamList = {
   Patient: undefined;

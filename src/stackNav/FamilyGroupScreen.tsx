@@ -1,8 +1,8 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FamilyGroup from '../pages/FamilyGroup';
+import FamilyGroup from '../screens/FamilyGroup';
 import FamilyGroupAdd from './FamilyGroupAdd';
-import FamilyGroupEdit from '../pages/FamilyGroupEdit';
+import FamilyGroupEdit from '../screens/FamilyGroupEdit';
 
 export type FamilyGroupScreenStackParamList = {
   FamilyGroup: undefined;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import MyPage from '../pages/MyPage';
-import MyActivityPost from '../pages/MyActivityPost';
+import MyPage from '../screens/MyPage';
+import MyActivityPost from '../screens/MyActivityPost';
 import VitaminScreen from './VitaminScreen';
 
 export type MyPageScreenStackParamList = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FamilyKey from '../pages/FamilyKey';
-import Relationship from '../pages/Relationship';
+import FamilyKey from '../screens/FamilyKey';
+import Relationship from '../screens/Relationship';
 
 export type FamilyGroupAddStackParamList = {
   FamilyKey: undefined;

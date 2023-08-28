@@ -1,9 +1,9 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Neighbor from '../pages/Neighbor';
-import NeighborPostRead from '../pages/NeighborPostRead';
-import NeighborPostEdit from '../pages/NeighborPostEdit';
-import NeighborPostWrite from '../pages/NeighborPostWrite';
+import Neighbor from '../screens/Neighbor';
+import NeighborPostRead from '../screens/NeighborPostRead';
+import NeighborPostEdit from '../screens/NeighborPostEdit';
+import NeighborPostWrite from '../screens/NeighborPostWrite';
 
 export type NeighborScreenStackParamList = {
   Neighbor: undefined;
