@@ -1,13 +1,13 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import FamilyGroup from '../screens/FamilyGroup';
+import FamilyGroup, { FamilyListProps } from '../screens/FamilyGroup';
 import FamilyGroupAdd from './FamilyGroupAdd';
 import FamilyGroupEdit from '../screens/FamilyGroupEdit';
 
 export type FamilyGroupScreenStackParamList = {
   FamilyGroup: undefined;
   FamilyGroupAdd: undefined;
-  FamilyGroupEdit: undefined;
+  FamilyGroupEdit: { familyList: FamilyListProps[] };
 };
 
 const FamilyGroupScreenStack =
