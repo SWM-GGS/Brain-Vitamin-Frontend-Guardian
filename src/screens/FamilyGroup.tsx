@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   FlatList,
+  ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -17,10 +18,19 @@ import {
 } from '@react-navigation/native';
 import { RootStackParamList } from '../../AppInner';
 import Config from 'react-native-config';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
+import LinearGradient from 'react-native-linear-gradient';
+import LogoText from '../assets/images/logo-text.svg';
+import { useAppDispatch } from '../store';
+import userSlice from '../slices/user';
 
+export type FamilyListProps = {
+  id: number;
+  profileImgUrl: string;
+  familyName: string;
+};
 type FamilyGroupScreenProps = NativeStackNavigationProp<
   FamilyGroupScreenStackParamList,
   'FamilyGroup'
@@ -30,17 +40,9 @@ type Props = CompositeNavigationProp<FamilyGroupScreenProps, RootProps>;
 
 function FamilyGroup() {
   const accessToken = useSelector((state: RootState) => state.user.accessToken);
-  type FamilyListProps = {
-    id: number;
-    profileImgUrl: string;
-    familyName: string;
-  };
   const [familyList, setFamilyList] = useState<FamilyListProps[]>([]);
   const navigation = useNavigation<Props>();
-
-  const toFamilyGroupEdit = () => {
-    navigation.navigate('FamilyGroupEdit');
-  };
+  const dispatch = useAppDispatch();
 
   const toHome = () => {
     navigation.navigate('Main');
@@ -48,6 +50,15 @@ function FamilyGroup() {
 
   const toFamilyGroupAdd = () => {
     navigation.navigate('FamilyGroupAdd');
+  };
+
+  const toFamilyGroupEdit = () => {
+    navigation.navigate('FamilyGroupEdit', { familyList });
+  };
+
+  const handleGroupSelect = (familyId: number, familyName: string) => {
+    dispatch(userSlice.actions.setFamilyInfo({ familyId, familyName }));
+    toHome();
   };
 
   useEffect(() => {
@@ -61,16 +72,68 @@ function FamilyGroup() {
         );
         setFamilyList(data.result);
       } catch (error) {
-        console.error(error as AxiosError);
+        console.error(error);
       }
     };
     getFamilyList();
+    // setFamilyList([
+    //   {
+    //     id: 0,
+    //     profileImgUrl:
+    //       'https://blog.kakaocdn.net/dn/0mySg/btqCUccOGVk/nQ68nZiNKoIEGNJkooELF1/img.jpg',
+    //     familyName: '봉지수',
+    //   },
+    //   { id: 1, profileImgUrl: '', familyName: '봉봉봉' },
+    //   { id: 2, profileImgUrl: '', familyName: '봉봉봉' },
+    // ]);
   }, [accessToken]);
+
+  const renderAddFamily = () => {
+    return (
+      <Pressable onPress={toFamilyGroupAdd}>
+        <LinearGradient
+          colors={['#FFCD9F', '#FF9839']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.box}>
+          <Text style={[styles.groupName, { color: 'white' }]}>
+            새로운 가족{'\n'}만들기
+          </Text>
+          <Plus style={styles.plus} />
+        </LinearGradient>
+      </Pressable>
+    );
+  };
+
+  const renderFamily = (item: FamilyListProps) => {
+    return item.profileImgUrl ? (
+      <Pressable onPress={() => handleGroupSelect(item.id, item.familyName)}>
+        <ImageBackground
+          style={styles.box}
+          borderRadius={13}
+          source={{ uri: item.profileImgUrl }}>
+          <Text style={styles.groupName}>
+            {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네
+            {'\n'}가족
+          </Text>
+        </ImageBackground>
+      </Pressable>
+    ) : (
+      <Pressable
+        style={styles.box}
+        onPress={() => handleGroupSelect(item.id, item.familyName)}>
+        <Text style={styles.groupName}>
+          {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네{'\n'}
+          가족
+        </Text>
+      </Pressable>
+    );
+  };
 
   return (
     <SafeAreaView>
       <View style={styles.header}>
-        <Text>로고</Text>
+        <LogoText width={100} />
         <Pressable onPress={toFamilyGroupEdit}>
           <Text>가족관리</Text>
         </Pressable>
@@ -79,27 +142,32 @@ function FamilyGroup() {
         <Text style={styles.label}>가족을 선택하세요</Text>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.boxWrapper}>
-            {familyList.length ? (
+            {familyList.length > 1 ? (
               <FlatList
-                data={familyList}
+                columnWrapperStyle={styles.columnWrapper}
+                scrollEnabled={false}
+                data={[
+                  ...familyList,
+                  { id: familyList.length, profileImgUrl: '', familyName: '' },
+                ]}
                 keyExtractor={v => `${v.id}`}
-                renderItem={({ item }) => (
-                  <Pressable style={styles.box} onPress={toFamilyGroupAdd}>
-                    <Text style={styles.groupName}>
-                      {item.familyName}네 가족
-                    </Text>
-                  </Pressable>
+                renderItem={({ item, index }) => (
+                  <>
+                    {index === familyList.length
+                      ? renderAddFamily()
+                      : renderFamily(item)}
+                  </>
                 )}
+                numColumns={2}
               />
             ) : (
-              <Pressable style={styles.box} onPress={toHome}>
-                <Text style={styles.groupName}>일단 둘러보기</Text>
-              </Pressable>
+              <>
+                {renderAddFamily()}
+                <Pressable style={styles.box} onPress={toHome}>
+                  <Text style={styles.groupName}>일단 둘러보기</Text>
+                </Pressable>
+              </>
             )}
-            <Pressable style={styles.box} onPress={toFamilyGroupAdd}>
-              <Text style={styles.groupName}>새로운 가족{'\n'}만들기</Text>
-              <Plus style={styles.plus} />
-            </Pressable>
           </View>
         </ScrollView>
       </View>
@@ -113,6 +181,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 16,
+    marginBottom: 50,
   },
   label: {
     fontFamily: 'Pretendard-Bold',
@@ -131,7 +200,7 @@ const styles = StyleSheet.create({
     width: 160,
     height: 210,
     backgroundColor: '#FFFFFF',
-    borderRadius: 8,
+    borderRadius: 13,
     shadowColor: 'rgb(0, 0, 0)',
     shadowOpacity: 0.1,
     shadowOffset: {
@@ -146,13 +215,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   groupName: {
-    fontFamily: 'Pretendard-Bold',
+    fontFamily: 'Pretendard-Medium',
     fontSize: 22,
     lineHeight: 34,
+    color: '#433D3A',
   },
   plus: {
     alignSelf: 'flex-end',
     padding: 2,
+  },
+  columnWrapper: {
+    justifyContent: 'space-between',
+  },
+  bold: {
+    fontFamily: 'Pretendard-Bold',
+    fontSize: 22,
+    lineHeight: 34,
+    color: '#433D3A',
   },
 });
 
