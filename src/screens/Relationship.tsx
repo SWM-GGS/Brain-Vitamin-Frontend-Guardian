@@ -10,10 +10,12 @@ import Header from '../components/Header';
 import { FamilyGroupAddStackParamList } from '../stackNav/FamilyGroupAdd';
 import { RootStackParamList } from '../../AppInner';
 import { useNavigation } from '@react-navigation/native';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import Config from 'react-native-config';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
+import { useAppDispatch } from '../store';
+import userSlice from '../slices/user';
 
 type FamilyGroupAddProps = NativeStackScreenProps<
   FamilyGroupAddStackParamList,
@@ -26,6 +28,8 @@ function Relationship({ route }: FamilyGroupAddProps) {
   const [isCodeFocused, setIsCodeFocused] = useState(false);
   const [relationship, setRelationship] = useState('');
   const rootNavigation = useNavigation<RootProps>();
+  const { familyId, familyName } = route.params;
+  const dispatch = useAppDispatch();
 
   const toMain = () => {
     rootNavigation.navigate('Main');
@@ -35,14 +39,15 @@ function Relationship({ route }: FamilyGroupAddProps) {
     try {
       await axios.post(
         `${Config.API_URL}/guardian/family-group`,
-        { familyId: route.params.familyId, relationship },
+        { familyId, relationship },
         {
           headers: { authorization: `Bearer ${accessToken}` },
         },
       );
+      dispatch(userSlice.actions.setFamilyInfo({ familyId, familyName }));
       toMain();
     } catch (error) {
-      console.error(error as AxiosError);
+      console.error(error);
     }
   };
 
@@ -51,7 +56,7 @@ function Relationship({ route }: FamilyGroupAddProps) {
       <Header label="가족 그룹 생성" />
       <View style={styles.body}>
         <Text style={[styles.text, styles.label]}>
-          {route.params.familyName}님과의 관계가 어떻게 되시나요?
+          {familyName}님과의 관계가 어떻게 되시나요?
         </Text>
         <View
           style={[
