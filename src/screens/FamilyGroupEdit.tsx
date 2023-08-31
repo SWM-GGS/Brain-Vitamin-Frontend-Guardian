@@ -25,6 +25,7 @@ import {
   launchImageLibrary,
 } from 'react-native-image-picker';
 import AWS from 'aws-sdk';
+import { commonStyles } from '../styles/common';
 
 type FamilyGroupScreenProps = NativeStackScreenProps<
   FamilyGroupScreenStackParamList,
@@ -229,12 +230,18 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
       return item.profileImgUrl ? (
         <Pressable onPress={() => handleDeleteSelect(item.id)}>
           <ImageBackground
-            style={styles.box}
+            style={commonStyles.box}
             borderRadius={13}
             source={{ uri: item.profileImgUrl }}>
-            <Text style={styles.groupName}>
-              {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네
-              {'\n'}가족
+            <Text style={commonStyles.groupName}>
+              {
+                (
+                  <Text style={commonStyles.groupNameBold}>
+                    {item.familyName}
+                  </Text>
+                ) as any
+              }
+              네{'\n'}가족
             </Text>
             {deleteList.includes(item.id) ? (
               <CheckCircle style={styles.check} />
@@ -245,11 +252,17 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
         </Pressable>
       ) : (
         <Pressable
-          style={styles.box}
+          style={commonStyles.box}
           onPress={() => handleDeleteSelect(item.id)}>
-          <Text style={styles.groupName}>
-            {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네
-            {'\n'}가족
+          <Text style={commonStyles.groupName}>
+            {
+              (
+                <Text style={commonStyles.groupNameBold}>
+                  {item.familyName}
+                </Text>
+              ) as any
+            }
+            네{'\n'}가족
           </Text>
           {deleteList.includes(item.id) ? (
             <CheckCircle style={styles.check} />
@@ -264,12 +277,18 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
       return (
         <Pressable onPress={() => handleImageSelect(item.id)}>
           <ImageBackground
-            style={styles.box}
+            style={commonStyles.box}
             borderRadius={13}
             source={{ uri: previewImg.base64 }}>
-            <Text style={styles.groupName}>
-              {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네
-              {'\n'}가족
+            <Text style={commonStyles.groupName}>
+              {
+                (
+                  <Text style={commonStyles.groupNameBold}>
+                    {item.familyName}
+                  </Text>
+                ) as any
+              }
+              네{'\n'}가족
             </Text>
             <View style={styles.edit}>
               <Text style={styles.editText}>프로필 사진 수정</Text>
@@ -281,12 +300,18 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
     return item.profileImgUrl ? (
       <Pressable onPress={() => handleImageSelect(item.id)}>
         <ImageBackground
-          style={styles.box}
+          style={commonStyles.box}
           borderRadius={13}
           source={{ uri: item.profileImgUrl }}>
-          <Text style={styles.groupName}>
-            {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네
-            {'\n'}가족
+          <Text style={commonStyles.groupName}>
+            {
+              (
+                <Text style={commonStyles.groupNameBold}>
+                  {item.familyName}
+                </Text>
+              ) as any
+            }
+            네{'\n'}가족
           </Text>
           <View style={styles.edit}>
             <Text style={styles.editText}>프로필 사진 수정</Text>
@@ -294,9 +319,16 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
         </ImageBackground>
       </Pressable>
     ) : (
-      <Pressable style={styles.box} onPress={() => handleImageSelect(item.id)}>
-        <Text style={styles.groupName}>
-          {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네{'\n'}
+      <Pressable
+        style={commonStyles.box}
+        onPress={() => handleImageSelect(item.id)}>
+        <Text style={commonStyles.groupName}>
+          {
+            (
+              <Text style={commonStyles.groupNameBold}>{item.familyName}</Text>
+            ) as any
+          }
+          네{'\n'}
           가족
         </Text>
         <View style={styles.edit}>
@@ -325,7 +357,7 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
             <View style={styles.boxWrapper}>
               {familyList.length ? (
                 <FlatList
-                  columnWrapperStyle={styles.columnWrapper}
+                  columnWrapperStyle={commonStyles.jcSpaceBetween}
                   scrollEnabled={false}
                   data={familyList}
                   keyExtractor={v => `${v.id}`}
@@ -339,16 +371,16 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
         {isDeleteMode ? (
           <Pressable
             style={[
-              styles.nextButton,
+              commonStyles.nextButton,
               { backgroundColor: deleteList.length ? '#FF9432' : '#c6c6c6' },
             ]}
             onPress={handleDelete}
             disabled={!deleteList.length}>
-            <Text style={styles.nextText}>삭제</Text>
+            <Text style={commonStyles.nextText}>삭제</Text>
           </Pressable>
         ) : (
-          <Pressable style={styles.nextButton} onPress={handleImageSave}>
-            <Text style={styles.nextText}>저장</Text>
+          <Pressable style={commonStyles.nextButton} onPress={handleImageSave}>
+            <Text style={commonStyles.nextText}>저장</Text>
           </Pressable>
         )}
       </View>
@@ -386,46 +418,6 @@ const styles = StyleSheet.create({
     paddingTop: 26,
     paddingBottom: 200,
   },
-  box: {
-    width: 160,
-    height: 210,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 13,
-    shadowColor: 'rgb(0, 0, 0)',
-    shadowOpacity: 0.1,
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowRadius: 18,
-    elevation: 18,
-    marginBottom: 16,
-    paddingVertical: 19,
-    paddingHorizontal: 16,
-    justifyContent: 'space-between',
-  },
-  groupName: {
-    fontFamily: 'Pretendard-Medium',
-    fontSize: 22,
-    lineHeight: 34,
-    color: '#433D3A',
-  },
-  plus: {
-    alignSelf: 'flex-end',
-    padding: 2,
-  },
-  columnWrapper: {
-    justifyContent: 'space-between',
-  },
-  bold: {
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 22,
-    lineHeight: 34,
-    color: '#433D3A',
-  },
-  align: {
-    justifyContent: 'space-between',
-  },
   edit: {
     paddingVertical: 7,
     paddingHorizontal: 10,
@@ -443,18 +435,6 @@ const styles = StyleSheet.create({
   },
   check: {
     alignSelf: 'flex-end',
-  },
-  nextButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16.5,
-    borderRadius: 11,
-    backgroundColor: '#FF9432',
-  },
-  nextText: {
-    fontFamily: 'Pretendard-Bold',
-    fontWeight: '700',
-    color: '#FFFFFF',
   },
 });
 

@@ -25,6 +25,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import LogoText from '../assets/images/logo-text.svg';
 import { useAppDispatch } from '../store';
 import userSlice from '../slices/user';
+import { commonStyles } from '../styles/common';
 
 export type FamilyListProps = {
   id: number;
@@ -85,8 +86,8 @@ function FamilyGroup() {
           colors={['#FFCD9F', '#FF9839']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={styles.box}>
-          <Text style={[styles.groupName, { color: 'white' }]}>
+          style={commonStyles.box}>
+          <Text style={[commonStyles.groupName, { color: 'white' }]}>
             새로운 가족{'\n'}만들기
           </Text>
           <Plus style={styles.plus} />
@@ -99,21 +100,32 @@ function FamilyGroup() {
     return item.profileImgUrl ? (
       <Pressable onPress={() => handleGroupSelect(item.id, item.familyName)}>
         <ImageBackground
-          style={styles.box}
+          style={commonStyles.box}
           borderRadius={13}
           source={{ uri: item.profileImgUrl }}>
-          <Text style={styles.groupName}>
-            {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네
-            {'\n'}가족
+          <Text style={commonStyles.groupName}>
+            {
+              (
+                <Text style={commonStyles.groupNameBold}>
+                  {item.familyName}
+                </Text>
+              ) as any
+            }
+            네{'\n'}가족
           </Text>
         </ImageBackground>
       </Pressable>
     ) : (
       <Pressable
-        style={styles.box}
+        style={commonStyles.box}
         onPress={() => handleGroupSelect(item.id, item.familyName)}>
-        <Text style={styles.groupName}>
-          {(<Text style={styles.bold}>{item.familyName}</Text>) as any}네{'\n'}
+        <Text style={commonStyles.groupName}>
+          {
+            (
+              <Text style={commonStyles.groupNameBold}>{item.familyName}</Text>
+            ) as any
+          }
+          네{'\n'}
           가족
         </Text>
       </Pressable>
@@ -134,7 +146,7 @@ function FamilyGroup() {
           <View style={styles.boxWrapper}>
             {familyList.length > 1 ? (
               <FlatList
-                columnWrapperStyle={styles.columnWrapper}
+                columnWrapperStyle={commonStyles.jcSpaceBetween}
                 scrollEnabled={false}
                 data={[
                   ...familyList,
@@ -153,8 +165,8 @@ function FamilyGroup() {
             ) : (
               <>
                 {renderAddFamily()}
-                <Pressable style={styles.box} onPress={toHome}>
-                  <Text style={styles.groupName}>일단 둘러보기</Text>
+                <Pressable style={commonStyles.box} onPress={toHome}>
+                  <Text style={commonStyles.groupName}>일단 둘러보기</Text>
                 </Pressable>
               </>
             )}
@@ -186,42 +198,9 @@ const styles = StyleSheet.create({
     paddingTop: 26,
     paddingBottom: 200,
   },
-  box: {
-    width: 160,
-    height: 210,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 13,
-    shadowColor: 'rgb(0, 0, 0)',
-    shadowOpacity: 0.1,
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowRadius: 18,
-    elevation: 18,
-    marginBottom: 16,
-    paddingVertical: 19,
-    paddingHorizontal: 16,
-    justifyContent: 'space-between',
-  },
-  groupName: {
-    fontFamily: 'Pretendard-Medium',
-    fontSize: 22,
-    lineHeight: 34,
-    color: '#433D3A',
-  },
   plus: {
     alignSelf: 'flex-end',
     padding: 2,
-  },
-  columnWrapper: {
-    justifyContent: 'space-between',
-  },
-  bold: {
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 22,
-    lineHeight: 34,
-    color: '#433D3A',
   },
 });
 
