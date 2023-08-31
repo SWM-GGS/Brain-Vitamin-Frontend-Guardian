@@ -76,16 +76,6 @@ function FamilyGroup() {
       }
     };
     getFamilyList();
-    // setFamilyList([
-    //   {
-    //     id: 0,
-    //     profileImgUrl:
-    //       'https://blog.kakaocdn.net/dn/0mySg/btqCUccOGVk/nQ68nZiNKoIEGNJkooELF1/img.jpg',
-    //     familyName: '봉지수',
-    //   },
-    //   { id: 1, profileImgUrl: '', familyName: '봉봉봉' },
-    //   { id: 2, profileImgUrl: '', familyName: '봉봉봉' },
-    // ]);
   }, [accessToken]);
 
   const renderAddFamily = () => {

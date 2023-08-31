@@ -55,17 +55,6 @@ function FamilyKey() {
     } catch (error) {
       console.error(error);
     }
-    // setIsNotFound(false);
-    // setSearchResult({
-    //   id: 3,
-    //   familyName: '환자',
-    //   profileImgUrl:
-    //     'https://developers.naver.com/inc/devcenter/images/cont/img_cafeapp.png',
-    //   memberCount: 4,
-    //   firstUserName: '보호자',
-    // });
-    // setIsNotFound(true);
-    // setSearchResult(null);
   };
 
   return (
