@@ -145,26 +145,23 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
       )?.profileImgUrl;
       let uploadUrl = originalUrl;
 
-      if (profileImg) {
-        const s3 = new AWS.S3();
-        const path = `familyGroupImages/${generateUniqueNumber()}-${
-          v.fileName
-        }`;
-        const uploadParams = {
-          Bucket: bucket,
-          Key: path,
-          Body: v.file,
-        };
-        const uploadS3 = async () => {
-          try {
-            const result = await s3.upload(uploadParams).promise();
-            uploadUrl = result.Location;
-          } catch (error) {
-            console.error('Error uploading file:', error);
-          }
-        };
-        uploadS3();
-      }
+      const s3 = new AWS.S3();
+      const path = `familyGroupImages/${generateUniqueNumber()}-${v.fileName}`;
+      const uploadParams = {
+        Bucket: bucket,
+        Key: path,
+        Body: v.file,
+      };
+
+      const uploadS3 = async () => {
+        try {
+          const result = await s3.upload(uploadParams).promise();
+          uploadUrl = result.Location;
+        } catch (error) {
+          console.error('Error uploading file:', error);
+        }
+      };
+      uploadS3();
 
       const sendData = async () => {
         try {
