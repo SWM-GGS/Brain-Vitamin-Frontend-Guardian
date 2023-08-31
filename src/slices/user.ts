@@ -4,7 +4,7 @@ const initialState = {
   name: '',
   nickname: '',
   phoneNumber: '',
-  familyKey: '',
+  familyId: -1,
   familyName: '',
   fontSize: 2,
   profileImgUrl: '',
@@ -18,7 +18,7 @@ const userSlice = createSlice({
       state.name = action.payload.name;
       state.nickname = action.payload.nickname;
       state.phoneNumber = action.payload.phoneNumber;
-      state.familyKey = action.payload.familyKey;
+      state.familyId = action.payload.familyId;
       state.familyName = action.payload.familyName;
       state.fontSize = action.payload.fontSize;
       state.profileImgUrl = action.payload.profileImgUrl;
@@ -35,6 +35,10 @@ const userSlice = createSlice({
     },
     setPhoneNumber(state, action) {
       state.phoneNumber = action.payload;
+    },
+    setFamilyInfo(state, action) {
+      state.familyId = action.payload.familyId;
+      state.familyName = action.payload.familyName;
     },
   },
 });

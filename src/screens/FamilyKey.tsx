@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, TextInput } from 'react-native';
+import { Pressable, StyleSheet, TextInput, View, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
 import Header from '../components/Header';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { FamilyGroupAddStackParamList } from '../stackNav/FamilyGroupAdd';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import Config from 'react-native-config';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
-import { Image } from 'react-native';
 
 type Props = NativeStackNavigationProp<FamilyGroupAddStackParamList>;
 
@@ -29,7 +27,7 @@ function FamilyKey() {
   const [searchResult, setSearchResult] = useState<SearchResultProps | null>(
     null,
   );
-  const [isSubMessageShown, setIsSubMessageShown] = useState(false);
+  const [isNotFound, setIsNotFound] = useState(false);
   const navigation = useNavigation<Props>();
 
   const toRelationship = () => {
@@ -47,22 +45,15 @@ function FamilyKey() {
         `${Config.API_URL}/guardian/family-group/${familyKey}`,
         { headers: { authorization: `Bearer ${accessToken}` } },
       );
-      if (data.isSuccess) {
-        setIsSubMessageShown(true);
+      if (!data.isSuccess) {
+        setIsNotFound(true);
+        setSearchResult(null);
       } else {
-        setIsSubMessageShown(false);
+        setIsNotFound(false);
         setSearchResult(data.result);
       }
-      setSearchResult({
-        id: 3,
-        familyName: '환자',
-        profileImgUrl:
-          'https://developers.naver.com/inc/devcenter/images/cont/img_cafeapp.png',
-        memberCount: 4,
-        firstUserName: '보호자',
-      });
     } catch (error) {
-      console.error(error as AxiosError);
+      console.error(error);
     }
   };
 
@@ -122,6 +113,7 @@ function FamilyKey() {
             <Image
               width={52}
               height={52}
+              borderRadius={8}
               source={{ uri: searchResult.profileImgUrl }}
             />
             <View>
@@ -135,7 +127,7 @@ function FamilyKey() {
             </View>
           </Pressable>
         )}
-        {isSubMessageShown && (
+        {isNotFound && (
           <Text style={styles.empty}>
             해당 가족이 없습니다. 다시 입력해주세요
           </Text>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   FlatList,
+  ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -17,10 +18,20 @@ import {
 } from '@react-navigation/native';
 import { RootStackParamList } from '../../AppInner';
 import Config from 'react-native-config';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
+import LinearGradient from 'react-native-linear-gradient';
+import LogoText from '../assets/images/logo-text.svg';
+import { useAppDispatch } from '../store';
+import userSlice from '../slices/user';
+import { commonStyles } from '../styles/common';
 
+export type FamilyListProps = {
+  id: number;
+  profileImgUrl: string;
+  familyName: string;
+};
 type FamilyGroupScreenProps = NativeStackNavigationProp<
   FamilyGroupScreenStackParamList,
   'FamilyGroup'
@@ -30,17 +41,9 @@ type Props = CompositeNavigationProp<FamilyGroupScreenProps, RootProps>;
 
 function FamilyGroup() {
   const accessToken = useSelector((state: RootState) => state.user.accessToken);
-  type FamilyListProps = {
-    id: number;
-    profileImgUrl: string;
-    familyName: string;
-  };
   const [familyList, setFamilyList] = useState<FamilyListProps[]>([]);
   const navigation = useNavigation<Props>();
-
-  const toFamilyGroupEdit = () => {
-    navigation.navigate('FamilyGroupEdit');
-  };
+  const dispatch = useAppDispatch();
 
   const toHome = () => {
     navigation.navigate('Main');
@@ -48,6 +51,15 @@ function FamilyGroup() {
 
   const toFamilyGroupAdd = () => {
     navigation.navigate('FamilyGroupAdd');
+  };
+
+  const toFamilyGroupEdit = () => {
+    navigation.navigate('FamilyGroupEdit', { familyList });
+  };
+
+  const handleGroupSelect = (familyId: number, familyName: string) => {
+    dispatch(userSlice.actions.setFamilyInfo({ familyId, familyName }));
+    toHome();
   };
 
   useEffect(() => {
@@ -61,16 +73,69 @@ function FamilyGroup() {
         );
         setFamilyList(data.result);
       } catch (error) {
-        console.error(error as AxiosError);
+        console.error(error);
       }
     };
     getFamilyList();
   }, [accessToken]);
 
+  const renderAddFamily = () => {
+    return (
+      <Pressable onPress={toFamilyGroupAdd}>
+        <LinearGradient
+          colors={['#FFCD9F', '#FF9839']}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={commonStyles.box}>
+          <Text style={[commonStyles.groupName, { color: 'white' }]}>
+            새로운 가족{'\n'}만들기
+          </Text>
+          <Plus style={styles.plus} />
+        </LinearGradient>
+      </Pressable>
+    );
+  };
+
+  const renderFamily = (item: FamilyListProps) => {
+    return item.profileImgUrl ? (
+      <Pressable onPress={() => handleGroupSelect(item.id, item.familyName)}>
+        <ImageBackground
+          style={commonStyles.box}
+          borderRadius={13}
+          source={{ uri: item.profileImgUrl }}>
+          <Text style={commonStyles.groupName}>
+            {
+              (
+                <Text style={commonStyles.groupNameBold}>
+                  {item.familyName}
+                </Text>
+              ) as any
+            }
+            네{'\n'}가족
+          </Text>
+        </ImageBackground>
+      </Pressable>
+    ) : (
+      <Pressable
+        style={commonStyles.box}
+        onPress={() => handleGroupSelect(item.id, item.familyName)}>
+        <Text style={commonStyles.groupName}>
+          {
+            (
+              <Text style={commonStyles.groupNameBold}>{item.familyName}</Text>
+            ) as any
+          }
+          네{'\n'}
+          가족
+        </Text>
+      </Pressable>
+    );
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.header}>
-        <Text>로고</Text>
+        <LogoText width={100} />
         <Pressable onPress={toFamilyGroupEdit}>
           <Text>가족관리</Text>
         </Pressable>
@@ -79,27 +144,32 @@ function FamilyGroup() {
         <Text style={styles.label}>가족을 선택하세요</Text>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.boxWrapper}>
-            {familyList.length ? (
+            {familyList.length > 1 ? (
               <FlatList
-                data={familyList}
+                columnWrapperStyle={commonStyles.jcSpaceBetween}
+                scrollEnabled={false}
+                data={[
+                  ...familyList,
+                  { id: familyList.length, profileImgUrl: '', familyName: '' },
+                ]}
                 keyExtractor={v => `${v.id}`}
-                renderItem={({ item }) => (
-                  <Pressable style={styles.box} onPress={toFamilyGroupAdd}>
-                    <Text style={styles.groupName}>
-                      {item.familyName}네 가족
-                    </Text>
-                  </Pressable>
+                renderItem={({ item, index }) => (
+                  <>
+                    {index === familyList.length
+                      ? renderAddFamily()
+                      : renderFamily(item)}
+                  </>
                 )}
+                numColumns={2}
               />
             ) : (
-              <Pressable style={styles.box} onPress={toHome}>
-                <Text style={styles.groupName}>일단 둘러보기</Text>
-              </Pressable>
+              <>
+                {renderAddFamily()}
+                <Pressable style={commonStyles.box} onPress={toHome}>
+                  <Text style={commonStyles.groupName}>일단 둘러보기</Text>
+                </Pressable>
+              </>
             )}
-            <Pressable style={styles.box} onPress={toFamilyGroupAdd}>
-              <Text style={styles.groupName}>새로운 가족{'\n'}만들기</Text>
-              <Plus style={styles.plus} />
-            </Pressable>
           </View>
         </ScrollView>
       </View>
@@ -113,6 +183,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 16,
+    marginBottom: 50,
   },
   label: {
     fontFamily: 'Pretendard-Bold',
@@ -126,29 +197,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 26,
     paddingBottom: 200,
-  },
-  box: {
-    width: 160,
-    height: 210,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 8,
-    shadowColor: 'rgb(0, 0, 0)',
-    shadowOpacity: 0.1,
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowRadius: 18,
-    elevation: 18,
-    marginBottom: 16,
-    paddingVertical: 19,
-    paddingHorizontal: 16,
-    justifyContent: 'space-between',
-  },
-  groupName: {
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 22,
-    lineHeight: 34,
   },
   plus: {
     alignSelf: 'flex-end',
