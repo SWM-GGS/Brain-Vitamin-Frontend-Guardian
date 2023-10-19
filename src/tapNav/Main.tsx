@@ -5,6 +5,7 @@ import NeighborScreen from '../stackNav/NeighborScreen';
 import HomeScreen from '../stackNav/HomeScreen';
 import PatientScreen from '../stackNav/PatientScreen';
 import MyPageScreen from '../stackNav/MyPageScreen';
+import FamilyFocusedIcon from '../assets/images/familyFocused.svg';
 import FamilyIcon from '../assets/images/family.svg';
 import HomeFocusedIcon from '../assets/images/homeFocused.svg';
 import HomeIcon from '../assets/images/home.svg';
@@ -12,6 +13,8 @@ import PatientFocusedIcon from '../assets/images/patientFocused.svg';
 import PatientIcon from '../assets/images/patient.svg';
 import MyPageFocusedIcon from '../assets/images/myPageFocused.svg';
 import MyPageIcon from '../assets/images/myPage.svg';
+import NeighborFocusedIcon from '../assets/images/neighborFocused.svg';
+import NeighborIcon from '../assets/images/neighbor.svg';
 
 export type MainParamList = {
   FamilyScreen: undefined;
@@ -34,13 +37,17 @@ function Main() {
         options={{
           tabBarLabel: '가족',
           tabBarIcon: ({ focused }) =>
-            focused ? <FamilyIcon /> : <FamilyIcon />,
+            focused ? <FamilyFocusedIcon /> : <FamilyIcon />,
         }}
       />
       <Tab.Screen
         name="NeighborScreen"
         component={NeighborScreen}
-        options={{ tabBarLabel: '이웃' }}
+        options={{
+          tabBarLabel: '이웃',
+          tabBarIcon: ({ focused }) =>
+            focused ? <NeighborFocusedIcon /> : <NeighborIcon />,
+        }}
       />
       <Tab.Screen
         name="HomeScreen"
