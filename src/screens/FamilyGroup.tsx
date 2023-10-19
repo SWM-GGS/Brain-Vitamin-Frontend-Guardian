@@ -124,7 +124,7 @@ function FamilyGroup() {
         <Text style={commonStyles.groupName}>
           {
             (
-              <Text style={commonStyles.groupNameBold}>{item.familyName}</Text>
+              <Text style={commonStyles.groupName}>{item.familyName}</Text>
             ) as any
           }
           네{'\n'}
