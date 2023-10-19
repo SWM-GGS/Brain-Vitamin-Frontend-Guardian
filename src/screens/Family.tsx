@@ -18,7 +18,7 @@ function Family({ navigation }: FamilyScreenProps) {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView edges={['top']}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
           <View style={styles.container}>

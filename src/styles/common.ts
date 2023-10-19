@@ -35,12 +35,6 @@ export const commonStyles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   groupName: {
-    fontFamily: 'Pretendard-Medium',
-    fontSize: 22,
-    lineHeight: 34,
-    color: '#433D3A',
-  },
-  groupNameBold: {
     fontFamily: 'Pretendard-Bold',
     fontSize: 22,
     lineHeight: 34,

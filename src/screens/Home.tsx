@@ -36,7 +36,7 @@ function Home() {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView edges={['top']}>
       <ScrollView>
         <View style={[styles.container, styles.weekly]}>
           <View style={styles.header}>

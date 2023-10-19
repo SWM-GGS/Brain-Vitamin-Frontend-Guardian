@@ -13,7 +13,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		685EBB3B2AA48381006FF0E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 685EBB3A2AA48381006FF0E1 /* GoogleService-Info.plist */; };
+		681C7DE12AE10EE000B674DB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 681C7DE02AE10EE000B674DB /* GoogleService-Info.plist */; };
 		7699B88040F8A987B510C191 /* libPods-BrainVitaminGuardian-BrainVitaminGuardianTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-BrainVitaminGuardian-BrainVitaminGuardianTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		883E067650FF44F6AD783E47 /* Pretendard-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 428A7589F1704DCABB2FBF4E /* Pretendard-Regular.ttf */; };
@@ -47,7 +47,7 @@
 		5709B34CF0A7D63546082F79 /* Pods-BrainVitaminGuardian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainVitaminGuardian.release.xcconfig"; path = "Target Support Files/Pods-BrainVitaminGuardian/Pods-BrainVitaminGuardian.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-BrainVitaminGuardian-BrainVitaminGuardianTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainVitaminGuardian-BrainVitaminGuardianTests.debug.xcconfig"; path = "Target Support Files/Pods-BrainVitaminGuardian-BrainVitaminGuardianTests/Pods-BrainVitaminGuardian-BrainVitaminGuardianTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-BrainVitaminGuardian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainVitaminGuardian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		685EBB3A2AA48381006FF0E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		681C7DE02AE10EE000B674DB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BrainVitaminGuardian/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-BrainVitaminGuardian-BrainVitaminGuardianTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainVitaminGuardian-BrainVitaminGuardianTests.release.xcconfig"; path = "Target Support Files/Pods-BrainVitaminGuardian-BrainVitaminGuardianTests/Pods-BrainVitaminGuardian-BrainVitaminGuardianTests.release.xcconfig"; sourceTree = "<group>"; };
 		CA9106A4CD5C452294F49BBD /* Pretendard-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pretendard-Bold.ttf"; path = "../src/assets/fonts/Pretendard-Bold.ttf"; sourceTree = "<group>"; };
@@ -98,7 +98,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				685EBB3A2AA48381006FF0E1 /* GoogleService-Info.plist */,
+				681C7DE02AE10EE000B674DB /* GoogleService-Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -206,7 +206,7 @@
 				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
 				6E7F40587505F6DE86AB9FBD /* [CP-User] [RNFB] Core Configuration */,
 				ADAAE6EC0F8AD5D301E97C31 /* [CP-User] [RNFB] Crashlytics Configuration */,
-				688307312AA4C77C00CBD922 /* ShellScript */,
+				688307312AA4C77C00CBD922 /* Setup Firebase Environment GoogleService-info.plist */,
 			);
 			buildRules = (
 			);
@@ -270,7 +270,7 @@
 				883E067650FF44F6AD783E47 /* Pretendard-Regular.ttf in Resources */,
 				015296FBDFEE4E15BA9E39B1 /* Pretendard-Bold.ttf in Resources */,
 				A88CDF26E6F74153A3271550 /* Pretendard-Medium.ttf in Resources */,
-				685EBB3B2AA48381006FF0E1 /* GoogleService-Info.plist in Resources */,
+				681C7DE12AE10EE000B674DB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +310,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BrainVitaminGuardian/Pods-BrainVitaminGuardian-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		688307312AA4C77C00CBD922 /* ShellScript */ = {
+		688307312AA4C77C00CBD922 /* Setup Firebase Environment GoogleService-info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -318,19 +318,17 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
-				"$(BUILT_PRODUCTS_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
-				"$(BUILT_PRODUCTS_DIR)/$(EXECUTABLE_PATH)",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
+			name = "Setup Firebase Environment GoogleService-info.plist";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n\"${PODS_ROOT}/FirebaseCrashlytics/upload-symbols\" -gsp \"${PROJECT_DIR}/GoogleService-Info.plist\" -p ios \"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}\"\n";
 		};
 		6E7F40587505F6DE86AB9FBD /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -648,6 +646,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -675,6 +674,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -716,6 +716,10 @@
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -740,6 +744,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
