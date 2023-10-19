@@ -233,12 +233,14 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
             style={commonStyles.box}
             borderRadius={13}
             source={{ uri: item.profileImgUrl }}>
-            <Text style={commonStyles.groupName}>
+            <Text
+              style={[
+                commonStyles.groupName,
+                { fontFamily: 'Pretendard-Medium' },
+              ]}>
               {
                 (
-                  <Text style={commonStyles.groupNameBold}>
-                    {item.familyName}
-                  </Text>
+                  <Text style={commonStyles.groupName}>{item.familyName}</Text>
                 ) as any
               }
               네{'\n'}가족
@@ -254,12 +256,14 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
         <Pressable
           style={commonStyles.box}
           onPress={() => handleDeleteSelect(item.id)}>
-          <Text style={commonStyles.groupName}>
+          <Text
+            style={[
+              commonStyles.groupName,
+              { fontFamily: 'Pretendard-Medium' },
+            ]}>
             {
               (
-                <Text style={commonStyles.groupNameBold}>
-                  {item.familyName}
-                </Text>
+                <Text style={commonStyles.groupName}>{item.familyName}</Text>
               ) as any
             }
             네{'\n'}가족
@@ -280,12 +284,14 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
             style={commonStyles.box}
             borderRadius={13}
             source={{ uri: previewImg.base64 }}>
-            <Text style={commonStyles.groupName}>
+            <Text
+              style={[
+                commonStyles.groupName,
+                { fontFamily: 'Pretendard-Medium' },
+              ]}>
               {
                 (
-                  <Text style={commonStyles.groupNameBold}>
-                    {item.familyName}
-                  </Text>
+                  <Text style={commonStyles.groupName}>{item.familyName}</Text>
                 ) as any
               }
               네{'\n'}가족
@@ -303,12 +309,14 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
           style={commonStyles.box}
           borderRadius={13}
           source={{ uri: item.profileImgUrl }}>
-          <Text style={commonStyles.groupName}>
+          <Text
+            style={[
+              commonStyles.groupName,
+              { fontFamily: 'Pretendard-Medium' },
+            ]}>
             {
               (
-                <Text style={commonStyles.groupNameBold}>
-                  {item.familyName}
-                </Text>
+                <Text style={commonStyles.groupName}>{item.familyName}</Text>
               ) as any
             }
             네{'\n'}가족
@@ -322,10 +330,11 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
       <Pressable
         style={commonStyles.box}
         onPress={() => handleImageSelect(item.id)}>
-        <Text style={commonStyles.groupName}>
+        <Text
+          style={[commonStyles.groupName, { fontFamily: 'Pretendard-Medium' }]}>
           {
             (
-              <Text style={commonStyles.groupNameBold}>{item.familyName}</Text>
+              <Text style={commonStyles.groupName}>{item.familyName}</Text>
             ) as any
           }
           네{'\n'}
