@@ -103,12 +103,14 @@ function FamilyGroup() {
           style={commonStyles.box}
           borderRadius={13}
           source={{ uri: item.profileImgUrl }}>
-          <Text style={commonStyles.groupName}>
+          <Text
+            style={[
+              commonStyles.groupName,
+              { fontFamily: 'Pretendard-Medium' },
+            ]}>
             {
               (
-                <Text style={commonStyles.groupNameBold}>
-                  {item.familyName}
-                </Text>
+                <Text style={commonStyles.groupName}>{item.familyName}</Text>
               ) as any
             }
             네{'\n'}가족
