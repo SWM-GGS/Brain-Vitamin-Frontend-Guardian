@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ImageBackground, StyleSheet, View } from 'react-native';
-import { CustomText as Text } from '../components/CustomText';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../components/Header';
 import { commonStyles } from '../styles/common';
@@ -17,11 +16,17 @@ function ProfileEdit() {
   const [newPhoneNumber, setNewPhoneNumber] = useState('');
   const [code, setCode] = useState('');
 
-  const handleDuplicate = () => {};
+  const handleDuplicate = () => {
+    console.log(newNickname);
+  };
 
-  const sendCode = () => {};
+  const sendCode = () => {
+    console.log(newPhoneNumber);
+  };
 
-  const handleCertificate = () => {};
+  const handleCertificate = () => {
+    console.log(code);
+  };
 
   return (
     <SafeAreaView edges={['top']} style={commonStyles.container}>

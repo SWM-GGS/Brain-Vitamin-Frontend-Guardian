@@ -9,7 +9,7 @@ type Props = {
   isDisabled?: boolean;
 };
 
-function Button({ text, onPress, isDisabled }: Props) {
+function Button({ text, onPress, isDisabled }: Readonly<Props>) {
   return (
     <Pressable
       style={[

@@ -23,7 +23,9 @@ function PhoneNumberSet({ navigation }: Props) {
     });
   };
 
-  const handleCertificate = () => {};
+  const handleCertificate = () => {
+    console.log(code);
+  };
 
   return (
     <SafeAreaView style={commonStyles.container}>

@@ -8,7 +8,7 @@ type Props = {
   style?: TextStyle | TextStyle[];
 };
 
-function Label({ text, ...props }: Props) {
+function Label({ text, ...props }: Readonly<Props>) {
   return (
     <Text
       {...props}

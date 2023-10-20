@@ -18,6 +18,7 @@ function NameSet({ navigation }: Props) {
 
   const toFamilyGroupScreen = () => {
     navigation.navigate('FamilyGroupScreen');
+    console.log(name, nickname);
   };
 
   return (

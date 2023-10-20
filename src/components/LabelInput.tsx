@@ -19,7 +19,7 @@ function LabelInput({
   onChangeText,
   isShort,
   editable,
-}: InputProps) {
+}: Readonly<InputProps>) {
   const fontSize = useSelector((state: RootState) => state.user.fontSize);
   const [isFocused, setIsFocused] = useState(false);
 

@@ -9,7 +9,7 @@ type Props = {
   isDisabled?: boolean;
 };
 
-function ShortButton({ text, onPress, isDisabled }: Props) {
+function ShortButton({ text, onPress, isDisabled }: Readonly<Props>) {
   return (
     <Pressable style={styles.button} disabled={isDisabled} onPress={onPress}>
       <Text size={14} style={commonStyles.textDarkGray}>
