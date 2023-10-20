@@ -348,7 +348,7 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={commonStyles.container}>
       <Header label="가족 그룹 수정" />
       <View style={styles.body}>
         <View style={styles.header}>
@@ -398,10 +398,6 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-  },
   body: {
     marginTop: 20,
     flex: 1,

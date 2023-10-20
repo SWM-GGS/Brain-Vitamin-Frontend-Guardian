@@ -10,6 +10,7 @@ import axios from 'axios';
 import Config from 'react-native-config';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
+import { commonStyles } from '../styles/common';
 
 type Props = NativeStackNavigationProp<FamilyGroupAddStackParamList>;
 
@@ -58,7 +59,7 @@ function FamilyKey() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={commonStyles.container}>
       <Header label="가족 그룹 생성" />
       <View style={styles.body}>
         <Text style={[styles.text, styles.label]}>
@@ -153,10 +154,6 @@ function FamilyKey() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-  },
   body: {
     marginTop: 40,
     flex: 1,

@@ -6,6 +6,7 @@ import { SignUpStepStackParamList } from '../stackNav/SignUpStep';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProgressStep from '../components/ProgressStep';
 import Header from '../components/Header';
+import { commonStyles } from '../styles/common';
 
 type Props = NativeStackScreenProps<SignUpStepStackParamList, 'BirthDateSet'>;
 
@@ -23,7 +24,7 @@ function BirthDateSet({ navigation, route }: Props) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={commonStyles.container}>
       <Header label="회원가입" />
       <ProgressStep currentStep={2} />
       <View style={styles.body}>
@@ -99,10 +100,6 @@ function BirthDateSet({ navigation, route }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-  },
   body: {
     marginTop: 40,
     flex: 1,

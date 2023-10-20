@@ -12,6 +12,7 @@ import {
 } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import ArrowRight from '../assets/images/arrowRight.svg';
+import { commonStyles } from '../styles/common';
 
 type HomeScreenProps = NativeStackNavigationProp<
   HomeScreenStackParamList,
@@ -38,9 +39,9 @@ function Home() {
   return (
     <SafeAreaView edges={['top']}>
       <ScrollView>
-        <View style={[styles.container, styles.weekly]}>
+        <View style={[commonStyles.container, styles.weekly]}>
           <View style={styles.header}>
-            <Text style={styles.label}>
+            <Text style={[commonStyles.label, { marginBottom: 20 }]}>
               닉네임님의 7월 첫째주{'\n'}두뇌 비타민 주간 활동
             </Text>
             <Pressable onPress={toFamilyGroup}>
@@ -80,7 +81,9 @@ function Home() {
         </View>
         <View style={styles.familyContainer}>
           <View style={[styles.familyTitle, styles.header]}>
-            <Text style={styles.label}>우리 가족 이야기</Text>
+            <Text style={[commonStyles.label, { marginBottom: 20 }]}>
+              우리 가족 이야기
+            </Text>
             <Pressable style={styles.align} onPress={toFamily}>
               <Text style={styles.showDetail}>전체보기</Text>
               <ArrowRight />
@@ -115,9 +118,11 @@ function Home() {
             </Pressable>
           </ScrollView>
         </View>
-        <View style={styles.container}>
+        <View style={commonStyles.container}>
           <View style={styles.header}>
-            <Text style={styles.label}>우리 이웃 이야기</Text>
+            <Text style={[commonStyles.label, { marginBottom: 20 }]}>
+              우리 이웃 이야기
+            </Text>
             <Pressable style={styles.align} onPress={toNeighbor}>
               <Text style={styles.showDetail}>전체보기</Text>
               <ArrowRight />
@@ -152,9 +157,6 @@ function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
   weekly: {
     backgroundColor: '#FFFFFF',
     borderBottomLeftRadius: 13,
@@ -175,12 +177,6 @@ const styles = StyleSheet.create({
   },
   familyTitle: {
     paddingHorizontal: 16,
-  },
-  label: {
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 20,
-    marginBottom: 20,
-    lineHeight: 27.9,
   },
   dayWrapper: {
     flexDirection: 'row',

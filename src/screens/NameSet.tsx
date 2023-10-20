@@ -6,6 +6,7 @@ import { SignUpScreenStackParamList } from '../stackNav/SignUpScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProgressStep from '../components/ProgressStep';
 import Header from '../components/Header';
+import { commonStyles } from '../styles/common';
 
 type Props = NativeStackScreenProps<SignUpScreenStackParamList>;
 
@@ -18,7 +19,7 @@ function NameSet({ navigation }: Props) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={commonStyles.container}>
       <Header label="회원가입" />
       <ProgressStep currentStep={3} />
       <View style={styles.body}>
@@ -85,10 +86,6 @@ function NameSet({ navigation }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-  },
   body: {
     marginTop: 40,
     flex: 1,

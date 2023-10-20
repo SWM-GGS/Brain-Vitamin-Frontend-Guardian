@@ -143,7 +143,9 @@ function FamilyGroup() {
         </Pressable>
       </View>
       <View>
-        <Text style={styles.label}>가족을 선택하세요</Text>
+        <Text style={[commonStyles.label, { paddingHorizontal: 16 }]}>
+          가족을 선택하세요
+        </Text>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.boxWrapper}>
             {familyList.length > 1 ? (
@@ -186,11 +188,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 16,
     marginBottom: 50,
-  },
-  label: {
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 20,
-    paddingHorizontal: 16,
   },
   boxWrapper: {
     flexDirection: 'row',

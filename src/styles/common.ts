@@ -40,4 +40,13 @@ export const commonStyles = StyleSheet.create({
     lineHeight: 34,
     color: '#433D3A',
   },
+  label: {
+    fontFamily: 'Pretendard-Bold',
+    fontSize: 20,
+    lineHeight: 27.9,
+  },
+  container: {
+    padding: 16,
+    flex: 1,
+  },
 });
