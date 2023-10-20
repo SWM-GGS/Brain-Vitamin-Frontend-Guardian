@@ -26,6 +26,7 @@ import LogoText from '../assets/images/logo-text.svg';
 import { useAppDispatch } from '../store';
 import userSlice from '../slices/user';
 import { commonStyles } from '../styles/common';
+import Label from '../components/Label';
 
 export type FamilyListProps = {
   id: number;
@@ -143,9 +144,7 @@ function FamilyGroup() {
         </Pressable>
       </View>
       <View>
-        <Text style={[commonStyles.label, { paddingHorizontal: 16 }]}>
-          가족을 선택하세요
-        </Text>
+        <Label style={{ paddingHorizontal: 16 }} text="가족을 선택하세요" />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.boxWrapper}>
             {familyList.length > 1 ? (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { SignUpStepStackParamList } from '../stackNav/SignUpStep';
@@ -7,11 +7,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import ProgressStep from '../components/ProgressStep';
 import Header from '../components/Header';
 import { commonStyles } from '../styles/common';
+import Button from '../components/Button';
+import Label from '../components/Label';
+import LabelInput from '../components/LabelInput';
 
 type Props = NativeStackScreenProps<SignUpStepStackParamList, 'BirthDateSet'>;
 
 function BirthDateSet({ navigation, route }: Props) {
-  const [isBirthDateFocused, setIsBirthDateFocused] = useState(false);
   const [birthDate, setBirthDate] = useState('');
   const [gender, setGender] = useState('');
 
@@ -27,39 +29,17 @@ function BirthDateSet({ navigation, route }: Props) {
     <SafeAreaView style={commonStyles.container}>
       <Header label="회원가입" />
       <ProgressStep currentStep={2} />
-      <View style={styles.body}>
-        <View style={styles.section}>
-          <Text style={[styles.text, styles.label]}>
-            생년월일을 입력해주세요
-          </Text>
-          <View
-            style={[
-              styles.birthDateInputBox,
-              {
-                borderWidth: isBirthDateFocused ? 1 : undefined,
-                borderColor: isBirthDateFocused ? '#FF9432' : undefined,
-                backgroundColor: isBirthDateFocused ? '#FFFFFF' : '#F4F4F4',
-              },
-            ]}>
-            <Text
-              style={[
-                styles.inputLabel,
-                { color: isBirthDateFocused ? '#FF9432' : '#6D6B69' },
-              ]}>
-              생년월일
-            </Text>
-            <TextInput
-              style={styles.input}
-              placeholder="8자리를 입력해주세요"
-              placeholderTextColor={'#939393'}
-              onFocus={() => setIsBirthDateFocused(true)}
-              onBlur={() => setIsBirthDateFocused(false)}
-              onChangeText={setBirthDate}
-            />
-          </View>
+      <View style={[commonStyles.flex, { marginTop: 40 }]}>
+        <View style={{ marginBottom: 32 }}>
+          <Label style={{ marginBottom: 16 }} text="생년월일을 입력해주세요" />
+          <LabelInput
+            text="생년월일"
+            placeholder="8자리를 입력해주세요"
+            onChangeText={setBirthDate}
+          />
         </View>
         <View>
-          <Text style={[styles.text, styles.label]}>성별을 선택해주세요</Text>
+          <Label style={{ marginBottom: 16 }} text="성별을 선택해주세요" />
           <View style={styles.align}>
             <Pressable
               style={[
@@ -92,48 +72,12 @@ function BirthDateSet({ navigation, route }: Props) {
           </View>
         </View>
       </View>
-      <Pressable style={styles.nextButton} onPress={toNameSet}>
-        <Text style={[styles.text, styles.nextText]}>다음</Text>
-      </Pressable>
+      <Button text="다음" onPress={toNameSet} />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  body: {
-    marginTop: 40,
-    flex: 1,
-  },
-  label: {
-    fontSize: 20,
-    marginBottom: 27,
-  },
-  text: {
-    fontFamily: 'Pretendard-Bold',
-    fontWeight: '700',
-  },
-  input: { fontSize: 16 },
-  birthDateInputBox: {
-    height: 57,
-    borderRadius: 8,
-    backgroundColor: '#F4F4F4',
-    padding: 10,
-  },
-  inputBox: {
-    width: 240,
-    height: 57,
-    borderRadius: 8,
-    backgroundColor: '#F4F4F4',
-    padding: 10,
-  },
-  inputLabel: {
-    fontFamily: 'Pretendard-Medium',
-    fontSize: 12,
-    marginBottom: 6,
-  },
-  section: {
-    marginBottom: 32,
-  },
   align: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -145,16 +89,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
-  },
-  nextButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16.5,
-    borderRadius: 11,
-    backgroundColor: '#FF9432',
-  },
-  nextText: {
-    color: '#FFFFFF',
   },
 });
 
