@@ -6,6 +6,7 @@ import { CustomText as Text } from '../components/CustomText';
 import EmotionImage from '../assets/images/emotion.svg';
 import { FamilyScreenStackParamList } from '../stackNav/FamilyScreen';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { commonStyles } from '../styles/common';
 
 type FamilyScreenProps = NativeStackScreenProps<
   FamilyScreenStackParamList,
@@ -21,7 +22,7 @@ function Family({ navigation }: FamilyScreenProps) {
     <SafeAreaView edges={['top']}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
-          <View style={styles.container}>
+          <View style={commonStyles.container}>
             <View>
               <View style={styles.writerWrapper}>
                 <ProfileImage width={44} height={44} />
@@ -67,7 +68,7 @@ function Family({ navigation }: FamilyScreenProps) {
           </View>
         </View>
         <View>
-          <View style={styles.container}>
+          <View style={commonStyles.container}>
             <View>
               <View style={styles.writerWrapper}>
                 <ProfileImage width={44} height={44} />
@@ -118,9 +119,6 @@ function Family({ navigation }: FamilyScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
   writerWrapper: {
     flexDirection: 'row',
     gap: 8,

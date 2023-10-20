@@ -8,6 +8,7 @@ import userSlice from '../slices/user';
 import { setFirstRun } from '../utils/firstRun';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../AppInner';
+import { commonStyles } from '../styles/common';
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'FontSizeSet'>;
 
@@ -23,7 +24,7 @@ function FontSizeSet() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={commonStyles.container}>
       <View style={styles.body}>
         <Text style={[styles.text, styles.label]}>
           글자 크기를 설정해주세요
@@ -76,10 +77,6 @@ function FontSizeSet() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-  },
   body: {
     marginTop: 40,
     flex: 1,

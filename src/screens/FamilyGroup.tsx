@@ -26,6 +26,7 @@ import LogoText from '../assets/images/logo-text.svg';
 import { useAppDispatch } from '../store';
 import userSlice from '../slices/user';
 import { commonStyles } from '../styles/common';
+import Label from '../components/Label';
 
 export type FamilyListProps = {
   id: number;
@@ -143,12 +144,12 @@ function FamilyGroup() {
         </Pressable>
       </View>
       <View>
-        <Text style={styles.label}>가족을 선택하세요</Text>
+        <Label style={{ paddingHorizontal: 16 }} text="가족을 선택하세요" />
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.boxWrapper}>
             {familyList.length > 1 ? (
               <FlatList
-                columnWrapperStyle={commonStyles.jcSpaceBetween}
+                columnWrapperStyle={commonStyles.justifyBetween}
                 scrollEnabled={false}
                 data={[
                   ...familyList,
@@ -186,11 +187,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     padding: 16,
     marginBottom: 50,
-  },
-  label: {
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 20,
-    paddingHorizontal: 16,
   },
   boxWrapper: {
     flexDirection: 'row',

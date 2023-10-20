@@ -5,6 +5,7 @@ import { CustomText as Text } from '../components/CustomText';
 import Kakao from '../assets/images/kakao.svg';
 import { AuthStackParamList } from '../stackNav/Auth';
 import Logo from '../assets/images/logo.svg';
+import { commonStyles } from '../styles/common';
 
 type LogInScreenProps = NativeStackScreenProps<AuthStackParamList, 'LogIn'>;
 
@@ -14,7 +15,7 @@ function LogIn({ navigation }: LogInScreenProps) {
   }, [navigation]);
 
   return (
-    <View style={styles.container}>
+    <View style={[commonStyles.container, commonStyles.justifyBetween]}>
       <View style={styles.logoContainer}>
         <Logo width={320} />
       </View>
@@ -38,11 +39,6 @@ function LogIn({ navigation }: LogInScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-    justifyContent: 'space-between',
-  },
   logoContainer: {
     flex: 1,
     justifyContent: 'center',
