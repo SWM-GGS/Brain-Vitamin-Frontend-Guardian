@@ -16,6 +16,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import { useAppDispatch } from '../store';
 import userSlice from '../slices/user';
+import { commonStyles } from '../styles/common';
 
 type FamilyGroupAddProps = NativeStackScreenProps<
   FamilyGroupAddStackParamList,
@@ -52,7 +53,7 @@ function Relationship({ route }: FamilyGroupAddProps) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={commonStyles.container}>
       <Header label="가족 그룹 생성" />
       <View style={styles.body}>
         <Text style={[styles.text, styles.label]}>
@@ -92,10 +93,6 @@ function Relationship({ route }: FamilyGroupAddProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-  },
   body: {
     marginTop: 40,
     flex: 1,

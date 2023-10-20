@@ -4,13 +4,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import ProfileImage from '../assets/images/myPage.svg';
 import { CustomText as Text } from '../components/CustomText';
 import EmotionImage from '../assets/images/emotion.svg';
+import { commonStyles } from '../styles/common';
 
 function FamilyPostRead() {
   return (
     <SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
-          <View style={styles.container}>
+          <View style={commonStyles.container}>
             <View>
               <View style={styles.writerWrapper}>
                 <ProfileImage width={44} height={44} />
@@ -55,7 +56,7 @@ function FamilyPostRead() {
               <Text>공유하기</Text>
             </Pressable>
           </View>
-          <View style={styles.container}>
+          <View style={commonStyles.container}>
             <Text style={styles.label}>댓글(14)</Text>
             <View style={styles.commentContainer}>
               <View style={styles.writerWrapper}>
@@ -133,9 +134,6 @@ function FamilyPostRead() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-  },
   writerWrapper: {
     flexDirection: 'row',
     gap: 8,
