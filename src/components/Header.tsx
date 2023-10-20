@@ -1,6 +1,5 @@
 import React from 'react';
-import { Pressable, StyleSheet } from 'react-native';
-import { View } from 'react-native';
+import { Pressable, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from './CustomText';
 import Back from '../assets/images/arrow-narrow-left.svg';
 import { useNavigation } from '@react-navigation/native';
