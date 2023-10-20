@@ -150,7 +150,7 @@ function FamilyGroup() {
           <View style={styles.boxWrapper}>
             {familyList.length > 1 ? (
               <FlatList
-                columnWrapperStyle={commonStyles.jcSpaceBetween}
+                columnWrapperStyle={commonStyles.justifyBetween}
                 scrollEnabled={false}
                 data={[
                   ...familyList,

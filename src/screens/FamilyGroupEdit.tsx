@@ -366,7 +366,7 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
             <View style={styles.boxWrapper}>
               {familyList.length ? (
                 <FlatList
-                  columnWrapperStyle={commonStyles.jcSpaceBetween}
+                  columnWrapperStyle={commonStyles.justifyBetween}
                   scrollEnabled={false}
                   data={familyList}
                   keyExtractor={v => `${v.id}`}

@@ -15,7 +15,7 @@ function LogIn({ navigation }: LogInScreenProps) {
   }, [navigation]);
 
   return (
-    <View style={[commonStyles.container, commonStyles.jcSpaceBetween]}>
+    <View style={[commonStyles.container, commonStyles.justifyBetween]}>
       <View style={styles.logoContainer}>
         <Logo width={320} />
       </View>
