@@ -72,4 +72,6 @@ export const commonStyles = StyleSheet.create({
   fontMedium: { fontFamily: 'Pretendard-Medium', fontWeight: '500' },
   fontBold: { fontFamily: 'Pretendard-Bold', fontWeight: '700' },
   flex: { flex: 1 },
+  flexRow: { flexDirection: 'row' },
+  textDarkGray: { color: '#6D6B69' },
 });

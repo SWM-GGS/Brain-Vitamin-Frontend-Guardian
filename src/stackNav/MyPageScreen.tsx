@@ -3,11 +3,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MyPage from '../screens/MyPage';
 import MyActivityPost from '../screens/MyActivityPost';
 import VitaminScreen from './VitaminScreen';
+import SettingScreen from './SettingScreen';
 
 export type MyPageScreenStackParamList = {
   MyPage: undefined;
   MyActivityPost: undefined;
   VitaminScreen: undefined;
+  SettingScreen: undefined;
 };
 
 const MyPageScreenStack =
@@ -24,6 +26,10 @@ function MyPageScreen() {
       <MyPageScreenStack.Screen
         name="VitaminScreen"
         component={VitaminScreen}
+      />
+      <MyPageScreenStack.Screen
+        name="SettingScreen"
+        component={SettingScreen}
       />
     </MyPageScreenStack.Navigator>
   );

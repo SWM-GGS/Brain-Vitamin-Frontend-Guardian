@@ -10,9 +10,16 @@ type InputProps = {
   placeholder: string;
   onChangeText: React.Dispatch<React.SetStateAction<string>>;
   isShort?: boolean;
+  editable?: boolean;
 };
 
-function LabelInput({ text, placeholder, onChangeText, isShort }: InputProps) {
+function LabelInput({
+  text,
+  placeholder,
+  onChangeText,
+  isShort,
+  editable,
+}: InputProps) {
   const fontSize = useSelector((state: RootState) => state.user.fontSize);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -40,6 +47,7 @@ function LabelInput({ text, placeholder, onChangeText, isShort }: InputProps) {
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
         onChangeText={onChangeText}
+        editable={editable ?? true}
       />
     </View>
   );
