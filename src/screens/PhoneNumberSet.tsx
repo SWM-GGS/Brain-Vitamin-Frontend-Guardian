@@ -29,7 +29,7 @@ function PhoneNumberSet({ navigation }: Props) {
 
   return (
     <SafeAreaView style={commonStyles.container}>
-      <Header label="회원가입" />
+      <Header text="회원가입" />
       <ProgressStep currentStep={1} />
       <View style={[commonStyles.flex, { marginTop: 40 }]}>
         <Label style={{ marginBottom: 16 }} text="전화번호를 입력해주세요" />

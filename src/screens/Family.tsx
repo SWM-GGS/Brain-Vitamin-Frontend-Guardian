@@ -24,11 +24,17 @@ function Family({ navigation }: FamilyScreenProps) {
         <View>
           <View style={commonStyles.container}>
             <View>
-              <View style={styles.writerWrapper}>
+              <View style={[styles.writerWrapper, { marginBottom: 20 }]}>
                 <ProfileImage width={44} height={44} />
                 <View>
-                  <Text style={styles.writerInfo}>닉네임</Text>
-                  <Text style={styles.writerSubInfo}>10분전</Text>
+                  <Text
+                    size={18}
+                    style={(commonStyles.fontBold, { marginBottom: 4 })}>
+                    닉네임
+                  </Text>
+                  <Text size={14} style={styles.writerSubInfo}>
+                    10분전
+                  </Text>
                 </View>
               </View>
               <Pressable style={styles.contents} onPress={toFamilyPostRead}>
@@ -70,11 +76,17 @@ function Family({ navigation }: FamilyScreenProps) {
         <View>
           <View style={commonStyles.container}>
             <View>
-              <View style={styles.writerWrapper}>
+              <View style={[styles.writerWrapper, { marginBottom: 20 }]}>
                 <ProfileImage width={44} height={44} />
                 <View>
-                  <Text style={styles.writerInfo}>닉네임</Text>
-                  <Text style={styles.writerSubInfo}>10분전</Text>
+                  <Text
+                    size={18}
+                    style={(commonStyles.fontBold, { marginBottom: 4 })}>
+                    닉네임
+                  </Text>
+                  <Text size={14} style={styles.writerSubInfo}>
+                    10분전
+                  </Text>
                 </View>
               </View>
               <Pressable style={styles.contents} onPress={toFamilyPostRead}>
@@ -122,7 +134,6 @@ const styles = StyleSheet.create({
   writerWrapper: {
     flexDirection: 'row',
     gap: 8,
-    marginBottom: 20,
   },
   contentsImage: {
     height: 235,
@@ -158,14 +169,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  writerInfo: {
-    marginBottom: 4,
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 18,
-  },
   writerSubInfo: {
     color: '#6D6B69',
-    fontSize: 14,
   },
   contents: {
     gap: 8,

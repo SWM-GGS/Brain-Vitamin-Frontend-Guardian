@@ -30,7 +30,7 @@ function ProfileEdit() {
 
   return (
     <SafeAreaView edges={['top']} style={commonStyles.container}>
-      <Header label="회원정보 수정" />
+      <Header text="회원정보 수정" />
       <View style={[commonStyles.pack, { marginVertical: 41 }]}>
         <ImageBackground
           style={styles.profileImage}

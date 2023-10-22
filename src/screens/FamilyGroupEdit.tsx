@@ -350,7 +350,7 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
 
   return (
     <SafeAreaView style={commonStyles.container}>
-      <Header label="가족 그룹 수정" />
+      <Header text="가족 그룹 수정" />
       <View style={styles.body}>
         <View style={styles.header}>
           {isDeleteMode ? (

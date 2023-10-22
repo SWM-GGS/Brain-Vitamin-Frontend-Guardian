@@ -55,7 +55,7 @@ function Relationship({ route }: FamilyGroupAddProps) {
 
   return (
     <SafeAreaView style={commonStyles.container}>
-      <Header label="가족 그룹 생성" />
+      <Header text="가족 그룹 생성" />
       <View style={[commonStyles.flex, { marginTop: 40 }]}>
         <Label
           style={{ marginBottom: 16 }}

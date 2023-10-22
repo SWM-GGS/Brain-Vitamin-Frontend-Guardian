@@ -5,10 +5,12 @@ import ProfileImage from '../assets/images/myPage.svg';
 import { CustomText as Text } from '../components/CustomText';
 import EmotionImage from '../assets/images/emotion.svg';
 import { commonStyles } from '../styles/common';
+import Header from '../components/Header';
 
 function FamilyPostRead() {
   return (
     <SafeAreaView>
+      <Header style={{ paddingHorizontal: 16 }} text="가족이야기" />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
           <View style={commonStyles.container}>

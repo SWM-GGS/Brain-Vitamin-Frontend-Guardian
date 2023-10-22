@@ -27,6 +27,7 @@ import { useAppDispatch } from '../store';
 import userSlice from '../slices/user';
 import { commonStyles } from '../styles/common';
 import Label from '../components/Label';
+import Header from '../components/Header';
 
 export type FamilyListProps = {
   id: number;
@@ -137,6 +138,7 @@ function FamilyGroup() {
 
   return (
     <SafeAreaView>
+      <Header style={{ paddingHorizontal: 16 }} text="가족그룹" />
       <View style={styles.header}>
         <LogoText width={100} />
         <Pressable onPress={toFamilyGroupEdit}>
