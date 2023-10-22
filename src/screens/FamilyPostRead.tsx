@@ -3,7 +3,11 @@ import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProfileImage from '../assets/images/myPage.svg';
 import { CustomText as Text } from '../components/CustomText';
-import EmotionImage from '../assets/images/emotion.svg';
+import EmotionIcon from '../assets/images/emotion.svg';
+import Emotion2Icon from '../assets/images/emotion2.svg';
+import CommentIcon from '../assets/images/comment.svg';
+import Comment2Icon from '../assets/images/comment2.svg';
+import ViewsIcon from '../assets/images/views.svg';
 import { commonStyles } from '../styles/common';
 import Header from '../components/Header';
 
@@ -31,15 +35,15 @@ function FamilyPostRead() {
               </Pressable>
               <View style={styles.contentsInfo}>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <EmotionIcon />
                   <Text>6</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <CommentIcon />
                   <Text>3</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <ViewsIcon />
                   <Text>300</Text>
                 </Pressable>
               </View>
@@ -47,11 +51,11 @@ function FamilyPostRead() {
           </View>
           <View style={styles.reactionWrapper}>
             <Pressable style={styles.reaction}>
-              <EmotionImage />
+              <Emotion2Icon />
               <Text>표정짓기</Text>
             </Pressable>
             <Pressable style={styles.reaction}>
-              <EmotionImage />
+              <Comment2Icon />
               <Text>댓글달기</Text>
             </Pressable>
             <Pressable style={styles.reaction}>
