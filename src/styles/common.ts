@@ -41,6 +41,7 @@ export const commonStyles = StyleSheet.create({
   },
   groupName: {
     fontFamily: 'Pretendard-Bold',
+    fontWeight: '700',
     fontSize: 22,
     lineHeight: 34,
     color: '#433D3A',
@@ -73,5 +74,5 @@ export const commonStyles = StyleSheet.create({
   fontBold: { fontFamily: 'Pretendard-Bold', fontWeight: '700' },
   flex: { flex: 1 },
   flexRow: { flexDirection: 'row' },
-  textDarkGray: { color: '#6D6B69' },
+  textOrange: { color: '#FF9432' },
 });

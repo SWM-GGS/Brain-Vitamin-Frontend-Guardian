@@ -6,13 +6,24 @@ import { commonStyles } from '../styles/common';
 type Props = {
   text: string;
   onPress: () => void;
-  isDisabled?: boolean;
+  disabled?: boolean;
 };
 
-function ShortButton({ text, onPress, isDisabled }: Readonly<Props>) {
+function ShortButton({ text, onPress, disabled }: Readonly<Props>) {
   return (
-    <Pressable style={styles.button} disabled={isDisabled} onPress={onPress}>
-      <Text size={14} style={commonStyles.textDarkGray}>
+    <Pressable
+      style={[
+        styles.button,
+        { backgroundColor: disabled ? '#F0F0F0' : '#FF9432' },
+      ]}
+      disabled={disabled}
+      onPress={onPress}>
+      <Text
+        size={14}
+        style={[
+          commonStyles.fontMedium,
+          { color: disabled ? '#6D6B69' : 'white' },
+        ]}>
         {text}
       </Text>
     </Pressable>
@@ -24,7 +35,6 @@ const styles = StyleSheet.create({
     width: 95,
     height: 64,
     borderRadius: 8,
-    backgroundColor: '#F0F0F0',
     justifyContent: 'center',
     alignItems: 'center',
   },

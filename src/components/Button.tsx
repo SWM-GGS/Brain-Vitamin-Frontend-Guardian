@@ -6,17 +6,17 @@ import { commonStyles } from '../styles/common';
 type Props = {
   text: string;
   onPress: () => void;
-  isDisabled?: boolean;
+  disabled?: boolean;
 };
 
-function Button({ text, onPress, isDisabled }: Readonly<Props>) {
+function Button({ text, onPress, disabled }: Readonly<Props>) {
   return (
     <Pressable
       style={[
         styles.nextButton,
-        { backgroundColor: isDisabled ? '#C6C6C6' : '#FF9432' },
+        { backgroundColor: disabled ? '#C6C6C6' : '#FF9432' },
       ]}
-      disabled={isDisabled}
+      disabled={disabled}
       onPress={onPress}>
       <Text style={[styles.nextText, commonStyles.fontBold]}>{text}</Text>
     </Pressable>

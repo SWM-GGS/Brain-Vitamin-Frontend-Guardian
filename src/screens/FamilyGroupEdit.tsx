@@ -26,6 +26,7 @@ import {
 } from 'react-native-image-picker';
 import AWS from 'aws-sdk';
 import { commonStyles } from '../styles/common';
+import Button from '../components/Button';
 
 type FamilyGroupScreenProps = NativeStackScreenProps<
   FamilyGroupScreenStackParamList,
@@ -388,9 +389,7 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
             <Text style={commonStyles.nextText}>삭제</Text>
           </Pressable>
         ) : (
-          <Pressable style={commonStyles.nextButton} onPress={handleImageSave}>
-            <Text style={commonStyles.nextText}>저장</Text>
-          </Pressable>
+          <Button text="저장" onPress={handleImageSave} />
         )}
       </View>
     </SafeAreaView>
