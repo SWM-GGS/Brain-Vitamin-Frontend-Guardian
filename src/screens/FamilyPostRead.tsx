@@ -10,8 +10,12 @@ import Comment2Icon from '../assets/images/comment2.svg';
 import ViewsIcon from '../assets/images/views.svg';
 import { commonStyles } from '../styles/common';
 import Header from '../components/Header';
+import { useModal } from '../hooks/useModal';
+import LayerPopup from '../components/LayerPopup';
 
 function FamilyPostRead() {
+  const { isModalOpen, modalText, openModal, closeModal } = useModal();
+
   return (
     <SafeAreaView>
       <Header style={{ paddingHorizontal: 16 }} text="가족이야기" />
@@ -28,9 +32,11 @@ function FamilyPostRead() {
               </View>
               <Pressable style={styles.contents}>
                 <Text>이번 여름 휴가로 갔던 속초 사진들 올려요ㅎㅎ</Text>
-                <View style={styles.contentsImage}>
-                  <Text>사진</Text>
-                </View>
+                <Pressable onPress={() => openModal('모달창입니다!')}>
+                  <View style={styles.contentsImage}>
+                    <Text>사진</Text>
+                  </View>
+                </Pressable>
                 <Text>사진설명</Text>
               </Pressable>
               <View style={styles.contentsInfo}>
@@ -135,6 +141,7 @@ function FamilyPostRead() {
           </View>
         </View>
       </ScrollView>
+      {isModalOpen && <LayerPopup label={modalText} closeModal={closeModal} />}
     </SafeAreaView>
   );
 }
