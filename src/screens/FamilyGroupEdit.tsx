@@ -27,6 +27,7 @@ import {
 import AWS from 'aws-sdk';
 import { commonStyles } from '../styles/common';
 import Button from '../components/Button';
+import Label from '../components/Label';
 
 type FamilyGroupScreenProps = NativeStackScreenProps<
   FamilyGroupScreenStackParamList,
@@ -297,8 +298,10 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
               }
               네{'\n'}가족
             </Text>
-            <View style={styles.edit}>
-              <Text style={styles.editText}>프로필 사진 수정</Text>
+            <View style={[styles.edit, { marginBottom: 60 }]}>
+              <Text size={14} color="white" style={commonStyles.textCenter}>
+                프로필 사진 수정
+              </Text>
             </View>
           </ImageBackground>
         </Pressable>
@@ -322,8 +325,10 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
             }
             네{'\n'}가족
           </Text>
-          <View style={styles.edit}>
-            <Text style={styles.editText}>프로필 사진 수정</Text>
+          <View style={[styles.edit, { marginBottom: 60 }]}>
+            <Text size={14} color="white" style={commonStyles.textCenter}>
+              프로필 사진 수정
+            </Text>
           </View>
         </ImageBackground>
       </Pressable>
@@ -341,8 +346,10 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
           네{'\n'}
           가족
         </Text>
-        <View style={styles.edit}>
-          <Text style={styles.editText}>프로필 사진 수정</Text>
+        <View style={[styles.edit, { marginBottom: 60 }]}>
+          <Text size={14} color="white" style={commonStyles.textCenter}>
+            프로필 사진 수정
+          </Text>
         </View>
       </Pressable>
     );
@@ -351,10 +358,10 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
   return (
     <SafeAreaView style={commonStyles.container}>
       <Header text="가족 그룹 수정" />
-      <View style={styles.body}>
-        <View style={styles.header}>
+      <View style={[commonStyles.flex, { marginTop: 20 }]}>
+        <View style={[styles.header, { marginVertical: 10 }]}>
           {isDeleteMode ? (
-            <Text style={styles.label}>삭제할 그룹을 선택해주세요</Text>
+            <Label text="삭제할 그룹을 선택해주세요" />
           ) : (
             <View />
           )}
@@ -362,7 +369,7 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
             <Text>{isDeleteMode ? '취소' : '가족 그룹 삭제'}</Text>
           </Pressable>
         </View>
-        <View style={styles.section}>
+        <View style={commonStyles.flex}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <View style={styles.boxWrapper}>
               {familyList.length ? (
@@ -397,23 +404,10 @@ function FamilyGroupEdit({ route }: FamilyGroupScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  body: {
-    marginTop: 20,
-    flex: 1,
-  },
   header: {
-    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: 25,
-    marginBottom: 10,
-  },
-  section: {
-    flex: 1,
-  },
-  label: {
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 20,
   },
   boxWrapper: {
     flexDirection: 'row',
@@ -430,12 +424,6 @@ const styles = StyleSheet.create({
     width: 114,
     height: 31,
     alignSelf: 'center',
-    marginBottom: 60,
-  },
-  editText: {
-    color: 'white',
-    fontSize: 14,
-    textAlign: 'center',
   },
   check: {
     alignSelf: 'flex-end',

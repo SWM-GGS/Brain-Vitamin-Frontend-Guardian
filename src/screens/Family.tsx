@@ -36,7 +36,7 @@ function Family({ navigation }: FamilyScreenProps) {
                     style={(commonStyles.fontBold, { marginBottom: 4 })}>
                     닉네임
                   </Text>
-                  <Text size={14} style={styles.writerSubInfo}>
+                  <Text size={14} color="#6D6B69">
                     10분전
                   </Text>
                 </View>
@@ -88,7 +88,7 @@ function Family({ navigation }: FamilyScreenProps) {
                     style={(commonStyles.fontBold, { marginBottom: 4 })}>
                     닉네임
                   </Text>
-                  <Text size={14} style={styles.writerSubInfo}>
+                  <Text size={14} color="#6D6B69">
                     10분전
                   </Text>
                 </View>
@@ -172,9 +172,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  writerSubInfo: {
-    color: '#6D6B69',
   },
   contents: {
     gap: 8,

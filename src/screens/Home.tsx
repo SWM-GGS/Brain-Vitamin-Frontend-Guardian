@@ -53,31 +53,31 @@ function Home() {
           <Pressable style={styles.dayWrapper}>
             <View style={styles.dayBox}>
               <Pill />
-              <Text style={styles.dayText}>월</Text>
+              <Text size={14}>월</Text>
             </View>
             <View style={styles.dayBox}>
               <Pill />
-              <Text style={styles.dayText}>화</Text>
+              <Text size={14}>화</Text>
             </View>
             <View style={styles.dayBox}>
               <Pill />
-              <Text style={styles.dayText}>수</Text>
+              <Text size={14}>수</Text>
             </View>
             <View style={styles.dayBox}>
               <Pill />
-              <Text style={styles.dayText}>목</Text>
+              <Text size={14}>목</Text>
             </View>
             <View style={styles.dayBox}>
               <Pill />
-              <Text style={styles.dayText}>금</Text>
+              <Text size={14}>금</Text>
             </View>
             <View style={styles.dayBox}>
               <Pill />
-              <Text style={styles.dayText}>토</Text>
+              <Text size={14}>토</Text>
             </View>
             <View style={styles.dayBox}>
               <Pill />
-              <Text style={styles.dayText}>일</Text>
+              <Text size={14}>일</Text>
             </View>
           </Pressable>
         </View>
@@ -85,7 +85,9 @@ function Home() {
           <View style={[styles.familyTitle, styles.header]}>
             <Label style={{ marginBottom: 20 }} text="우리 가족 이야기" />
             <Pressable style={styles.align} onPress={toFamily}>
-              <Text style={styles.showDetail}>전체보기</Text>
+              <Text color="#6D6B69" style={commonStyles.fontBold}>
+                전체보기
+              </Text>
               <ArrowRight />
             </Pressable>
           </View>
@@ -96,9 +98,9 @@ function Home() {
               </View>
               <View style={styles.familyContents}>
                 <View style={styles.familyContentsSub}>
-                  <Text style={styles.sub}>1시간 전</Text>
-                  <Text style={styles.sub}>표정 3</Text>
-                  <Text style={styles.sub}>댓글 3</Text>
+                  <Text size={12}>1시간 전</Text>
+                  <Text size={12}>표정 3</Text>
+                  <Text size={12}>댓글 3</Text>
                 </View>
                 <Text>이번 여름 휴가로 갔던 속초 사진들 올려요ㅎㅎ</Text>
               </View>
@@ -109,9 +111,9 @@ function Home() {
               </View>
               <View style={styles.familyContents}>
                 <View style={styles.familyContentsSub}>
-                  <Text style={styles.sub}>1시간 전</Text>
-                  <Text style={styles.sub}>표정 3</Text>
-                  <Text style={styles.sub}>댓글 3</Text>
+                  <Text size={12}>1시간 전</Text>
+                  <Text size={12}>표정 3</Text>
+                  <Text size={12}>댓글 3</Text>
                 </View>
                 <Text>이번 여름 휴가로 갔던 속초 사진들 올려요ㅎㅎ</Text>
               </View>
@@ -122,13 +124,17 @@ function Home() {
           <View style={styles.header}>
             <Label style={{ marginBottom: 20 }} text="우리 이웃 이야기" />
             <Pressable style={styles.align} onPress={toNeighbor}>
-              <Text style={styles.showDetail}>전체보기</Text>
+              <Text color="#6D6B69" style={commonStyles.fontBold}>
+                전체보기
+              </Text>
               <ArrowRight />
             </Pressable>
           </View>
           <Pressable style={styles.neighborBox}>
             <View>
-              <Text style={styles.neighborTitle}>요양원 추천</Text>
+              <Text style={[commonStyles.fontBold, { marginBottom: 6 }]}>
+                요양원 추천
+              </Text>
               <Text style={styles.neighborContents}>
                 미추홀구 주변에 괜찮은 요양원 추천해주세요
               </Text>
@@ -139,7 +145,9 @@ function Home() {
           </Pressable>
           <Pressable style={styles.neighborBox}>
             <View>
-              <Text style={styles.neighborTitle}>요양원 추천</Text>
+              <Text style={[commonStyles.fontBold, { marginBottom: 6 }]}>
+                요양원 추천
+              </Text>
               <Text style={styles.neighborContents}>
                 미추홀구 주변에 괜찮은 요양원 추천해주세요
               </Text>
@@ -192,9 +200,6 @@ const styles = StyleSheet.create({
     borderColor: '#FF9432',
     // overflow: 'hidden',
   },
-  dayText: {
-    fontSize: 14,
-  },
   familyContainer: {
     paddingTop: 24,
   },
@@ -230,9 +235,6 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     gap: 8,
   },
-  sub: {
-    fontSize: 12,
-  },
   neighborBox: {
     height: 90,
     backgroundColor: '#FFFFFF',
@@ -256,20 +258,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'tomato',
     borderRadius: 6,
   },
-  neighborTitle: {
-    fontFamily: 'Pretendard-Bold',
-    marginBottom: 6,
-  },
   neighborContents: {
     width: 250,
   },
   align: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  showDetail: {
-    fontFamily: 'Pretendard-Bold',
-    color: '#6D6B69',
   },
 });
 
