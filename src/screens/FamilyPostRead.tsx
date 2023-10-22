@@ -11,6 +11,7 @@ import ViewsIcon from '../assets/images/views.svg';
 import { commonStyles } from '../styles/common';
 import Header from '../components/Header';
 import { useModal } from '../hooks/useModal';
+import VitaminWrite from './VitaminWrite';
 import LayerPopup from '../components/LayerPopup';
 
 function FamilyPostRead() {
@@ -32,7 +33,7 @@ function FamilyPostRead() {
               </View>
               <Pressable style={styles.contents}>
                 <Text>이번 여름 휴가로 갔던 속초 사진들 올려요ㅎㅎ</Text>
-                <Pressable onPress={() => openModal('모달창입니다!')}>
+                <Pressable onPress={() => openModal('비타민')}>
                   <View style={styles.contentsImage}>
                     <Text>사진</Text>
                   </View>
@@ -141,7 +142,12 @@ function FamilyPostRead() {
           </View>
         </View>
       </ScrollView>
-      {isModalOpen && <LayerPopup label={modalText} closeModal={closeModal} />}
+      {isModalOpen &&
+        (modalText === '비타민' ? (
+          <VitaminWrite closeModal={closeModal} />
+        ) : (
+          <LayerPopup label={modalText} closeModal={closeModal} />
+        ))}
     </SafeAreaView>
   );
 }
