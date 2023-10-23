@@ -14,6 +14,7 @@ import { RootState } from '../store/reducer';
 import { useSelector } from 'react-redux';
 import LabelInput from '../components/LabelInput';
 import Button from '../components/Button';
+import DropDownPicker, { ValueType } from 'react-native-dropdown-picker';
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -21,12 +22,45 @@ type Props = {
   closeModal: () => void;
 };
 function VitaminWrite({ closeModal }: Readonly<Props>) {
-  const { familyName } = useSelector((state: RootState) => state.user);
+  const { familyName, fontSize } = useSelector(
+    (state: RootState) => state.user,
+  );
   const [place, setPlace] = useState('');
   const [headCount, setHeadCount] = useState('');
+  const [year, setYear] = useState<string | null>('');
+  const [openYear, setOpenYear] = useState(false);
+  const [valueYear, setValueYear] = useState(null);
+  const currentYear = new Date().getFullYear();
+  const startYear = 1940;
+  const [itemsYear, setItemsYear] = useState(
+    Array.from(
+      { length: currentYear - startYear + 1 },
+      (_, i) => currentYear - i,
+    ).map(v => {
+      return { label: `${v}`, value: `${v}` };
+    }),
+  );
+  const [season, setSeason] = useState<ValueType | null>('');
+  const [openSeason, setOpenSeason] = useState(false);
+  const [valueSeason, setValueSeason] = useState(null);
+  const [itemsSeason, setItemsSeason] = useState([
+    { label: '봄', value: '봄' },
+    { label: '여름', value: '여름' },
+    { label: '가을', value: '가을' },
+    { label: '겨울', value: '겨울' },
+  ]);
+  const [members, setMembers] = useState<ValueType[] | null>([]);
+  const [openMembers, setOpenMembers] = useState(false);
+  const [valueMembers, setValueMembers] = useState<string[]>([]);
+  const [itemsMembers, setItemsMembers] = useState([
+    { label: '큰 아들', value: '큰 아들' },
+    { label: '작은 아들', value: '작은 아들' },
+    { label: '큰 딸', value: '큰 딸' },
+    { label: '작은 딸', value: '작은 딸' },
+  ]);
 
   const handleVitaminSave = () => {
-    console.log(place, headCount);
+    console.log(place, headCount, year, season, members);
   };
 
   return (
@@ -46,7 +80,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
           </Pressable>
         </View>
         <ScrollView contentContainerStyle={commonStyles.flex}>
-          {/* TODO: scroll 안 되는 문제 해결. dropbox 구현하기 */}
+          {/* TODO: scroll 안 되는 문제 해결. nested scroll 문제 해결 */}
           <View
             style={[commonStyles.itemsCenter, { gap: 19, marginBottom: 34 }]}>
             <View style={styles.image} />
@@ -56,7 +90,43 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
           </View>
           <View style={{ gap: 32 }}>
             <View style={{ gap: 16 }}>
-              <Text style={commonStyles.fontMedium}>이름을 입력해주세요</Text>
+              <Text style={commonStyles.fontMedium}>언제 찍었나요?</Text>
+              <View style={[commonStyles.flexRow, { gap: 8 }]}>
+                <DropDownPicker
+                  open={openYear}
+                  setOpen={setOpenYear}
+                  items={itemsYear}
+                  setItems={setItemsYear}
+                  value={valueYear}
+                  setValue={setValueYear}
+                  onChangeValue={v => setYear(v)}
+                  placeholder="연도 선택"
+                  maxHeight={300}
+                  style={{
+                    height: 57,
+                    borderColor: openYear ? '#FF9432' : '#E8E8E8',
+                  }}
+                  containerStyle={{ width: 166 }}
+                  textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+                />
+                <DropDownPicker
+                  open={openSeason}
+                  setOpen={setOpenSeason}
+                  items={itemsSeason}
+                  setItems={setItemsSeason}
+                  value={valueSeason}
+                  setValue={setValueSeason}
+                  onChangeValue={v => setSeason(v)}
+                  placeholder="계절 선택"
+                  maxHeight={300}
+                  style={{
+                    height: 57,
+                    borderColor: openSeason ? '#FF9432' : '#E8E8E8',
+                  }}
+                  containerStyle={{ width: 166 }}
+                  textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+                />
+              </View>
             </View>
             <View style={{ gap: 16 }}>
               <Text style={commonStyles.fontMedium}>어디에서 찍었나요?</Text>
@@ -78,6 +148,23 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
             </View>
             <View style={{ gap: 16 }}>
               <Text style={commonStyles.fontMedium}>사진에 누가 있나요?</Text>
+              <DropDownPicker
+                open={openMembers}
+                setOpen={setOpenMembers}
+                items={itemsMembers}
+                setItems={setItemsMembers}
+                value={valueMembers}
+                setValue={setValueMembers}
+                onChangeValue={v => setMembers(v)}
+                placeholder="우리 가족 구성원 중에 선택하기"
+                maxHeight={300}
+                multiple={true}
+                style={{
+                  height: 57,
+                  borderColor: openMembers ? '#FF9432' : '#E8E8E8',
+                }}
+                textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+              />
             </View>
           </View>
           <Button text="저장" onPress={handleVitaminSave} />
