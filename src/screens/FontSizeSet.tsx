@@ -9,6 +9,8 @@ import { setFirstRun } from '../utils/firstRun';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../AppInner';
 import { commonStyles } from '../styles/common';
+import Label from '../components/Label';
+import Button from '../components/Button';
 
 type Props = NativeStackNavigationProp<RootStackParamList, 'FontSizeSet'>;
 
@@ -25,74 +27,65 @@ function FontSizeSet() {
 
   return (
     <SafeAreaView style={commonStyles.container}>
-      <View style={styles.body}>
-        <Text style={[styles.text, styles.label]}>
-          글자 크기를 설정해주세요
-        </Text>
-        <Pressable
-          style={[
-            styles.fontButton,
-            {
-              backgroundColor: fontSize === 3 ? '#FFF5EC' : '#FFFFFF',
-              borderWidth: fontSize === 3 ? 1 : undefined,
-              borderColor: fontSize === 3 ? '#FF9432' : undefined,
-            },
-          ]}
-          onPress={() => setFontSize(3)}>
-          <Text style={[styles.text, styles.option, styles.large]}>크게</Text>
-          <Text style={styles.large}>잘했고, 잘해왔고, 잘할 거야</Text>
-        </Pressable>
-        <Pressable
-          style={[
-            styles.fontButton,
-            {
-              backgroundColor: fontSize === 2 ? '#FFF5EC' : '#FFFFFF',
-              borderWidth: fontSize === 2 ? 1 : undefined,
-              borderColor: fontSize === 2 ? '#FF9432' : undefined,
-            },
-          ]}
-          onPress={() => setFontSize(2)}>
-          <Text style={[styles.text, styles.option, styles.medium]}>보통</Text>
-          <Text style={styles.medium}>잘했고, 잘해왔고, 잘할 거야</Text>
-        </Pressable>
-        <Pressable
-          style={[
-            styles.fontButton,
-            {
-              backgroundColor: fontSize === 1 ? '#FFF5EC' : '#FFFFFF',
-              borderWidth: fontSize === 1 ? 1 : undefined,
-              borderColor: fontSize === 1 ? '#FF9432' : undefined,
-            },
-          ]}
-          onPress={() => setFontSize(1)}>
-          <Text style={[styles.text, styles.option]}>작게</Text>
-          <Text style={styles.small}>잘했고, 잘해왔고, 잘할 거야</Text>
-        </Pressable>
+      <View style={[commonStyles.flex, { marginTop: 40 }]}>
+        <Label style={{ marginBottom: 27 }} text="글자 크기를 설정해주세요" />
+        <View style={{ gap: 19 }}>
+          <Pressable
+            style={[
+              styles.fontButton,
+              {
+                backgroundColor: fontSize === 3 ? '#FFF5EC' : 'white',
+                borderColor: fontSize === 3 ? '#FF9432' : 'white',
+              },
+            ]}
+            onPress={() => setFontSize(3)}>
+            <Text
+              size={20}
+              style={[commonStyles.textOrange, commonStyles.fontBold]}>
+              크게
+            </Text>
+            <Text size={20}>잘했고, 잘해왔고, 잘할 거야</Text>
+          </Pressable>
+          <Pressable
+            style={[
+              styles.fontButton,
+              {
+                backgroundColor: fontSize === 2 ? '#FFF5EC' : 'white',
+                borderColor: fontSize === 2 ? '#FF9432' : 'white',
+              },
+            ]}
+            onPress={() => setFontSize(2)}>
+            <Text
+              size={18}
+              style={[commonStyles.textOrange, commonStyles.fontBold]}>
+              보통
+            </Text>
+            <Text size={18}>잘했고, 잘해왔고, 잘할 거야</Text>
+          </Pressable>
+          <Pressable
+            style={[
+              styles.fontButton,
+              {
+                backgroundColor: fontSize === 1 ? '#FFF5EC' : 'white',
+                borderColor: fontSize === 1 ? '#FF9432' : 'white',
+              },
+            ]}
+            onPress={() => setFontSize(1)}>
+            <Text
+              size={16}
+              style={[commonStyles.textOrange, commonStyles.fontBold]}>
+              작게
+            </Text>
+            <Text size={16}>잘했고, 잘해왔고, 잘할 거야</Text>
+          </Pressable>
+        </View>
       </View>
-      <Pressable style={styles.nextButton} onPress={toAuth}>
-        <Text style={[styles.text, styles.nextText]}>다음</Text>
-      </Pressable>
+      <Button text="다음" onPress={toAuth} />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  body: {
-    marginTop: 40,
-    flex: 1,
-  },
-  label: {
-    fontSize: 20,
-    marginBottom: 27,
-  },
-  option: {
-    marginBottom: 4,
-    color: '#FF9432',
-  },
-  text: {
-    fontFamily: 'Pretendard-Bold',
-    fontWeight: '700',
-  },
   fontButton: {
     height: 87,
     paddingVertical: 13.5,
@@ -107,26 +100,7 @@ const styles = StyleSheet.create({
     shadowRadius: 18,
     elevation: 18,
     justifyContent: 'space-around',
-    marginBottom: 19,
-  },
-  large: {
-    fontSize: 20,
-  },
-  medium: {
-    fontSize: 18,
-  },
-  small: {
-    fontSize: 16,
-  },
-  nextButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16.5,
-    borderRadius: 11,
-    backgroundColor: '#FF9432',
-  },
-  nextText: {
-    color: '#FFFFFF',
+    borderWidth: 1,
   },
 });
 

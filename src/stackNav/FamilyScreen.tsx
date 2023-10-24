@@ -4,16 +4,12 @@ import Family from '../screens/Family';
 import FamilyPostRead from '../screens/FamilyPostRead';
 import FamilyPostEdit from '../screens/FamilyGroupEdit';
 import FamilyPostWrite from '../screens/FamilyPostWrite';
-import VitaminWrite from '../screens/VitaminWrite';
-import VitaminEdit from '../screens/VitaminEdit';
 
 export type FamilyScreenStackParamList = {
   Family: undefined;
   FamilyPostRead: undefined;
   FamilyPostEdit: undefined;
   FamilyPostWrite: undefined;
-  VitaminWrite: undefined;
-  VitaminEdit: undefined;
 };
 
 const FamilyScreenStack =
@@ -44,8 +40,6 @@ function FamilyScreen() {
         name="FamilyPostWrite"
         component={FamilyPostWrite}
       />
-      <FamilyScreenStack.Screen name="VitaminWrite" component={VitaminWrite} />
-      <FamilyScreenStack.Screen name="VitaminEdit" component={VitaminEdit} />
     </FamilyScreenStack.Navigator>
   );
 }

@@ -47,20 +47,15 @@ function MyPage() {
         <View style={styles.inputBox}>
           <Text
             size={12}
-            style={[
-              commonStyles.textDarkGray,
-              commonStyles.fontMedium,
-              { marginBottom: 6 },
-            ]}>
+            color="#6D6B69"
+            style={[commonStyles.fontMedium, { marginBottom: 6 }]}>
             닉네임
           </Text>
           <Text>{nickname}</Text>
         </View>
       </View>
       <View style={{ marginBottom: 44 }}>
-        <Text
-          size={14}
-          style={[commonStyles.textDarkGray, { marginBottom: 8 }]}>
+        <Text size={14} color="#6D6B69" style={{ marginBottom: 8 }}>
           게시글관리
         </Text>
         <View style={commonStyles.menuBox}>
@@ -76,9 +71,7 @@ function MyPage() {
         </View>
       </View>
       <View>
-        <Text
-          size={14}
-          style={[commonStyles.textDarkGray, { marginBottom: 8 }]}>
+        <Text size={14} color="#6D6B69" style={{ marginBottom: 8 }}>
           서비스
         </Text>
         <View style={commonStyles.menuBox}>

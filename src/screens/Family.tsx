@@ -3,7 +3,11 @@ import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProfileImage from '../assets/images/myPage.svg';
 import { CustomText as Text } from '../components/CustomText';
-import EmotionImage from '../assets/images/emotion.svg';
+import EmotionIcon from '../assets/images/emotion.svg';
+import Emotion2Icon from '../assets/images/emotion2.svg';
+import CommentIcon from '../assets/images/comment.svg';
+import Comment2Icon from '../assets/images/comment2.svg';
+import ViewsIcon from '../assets/images/views.svg';
 import { FamilyScreenStackParamList } from '../stackNav/FamilyScreen';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { commonStyles } from '../styles/common';
@@ -24,11 +28,17 @@ function Family({ navigation }: FamilyScreenProps) {
         <View>
           <View style={commonStyles.container}>
             <View>
-              <View style={styles.writerWrapper}>
+              <View style={[styles.writerWrapper, { marginBottom: 20 }]}>
                 <ProfileImage width={44} height={44} />
                 <View>
-                  <Text style={styles.writerInfo}>닉네임</Text>
-                  <Text style={styles.writerSubInfo}>10분전</Text>
+                  <Text
+                    size={18}
+                    style={(commonStyles.fontBold, { marginBottom: 4 })}>
+                    닉네임
+                  </Text>
+                  <Text size={14} color="#6D6B69">
+                    10분전
+                  </Text>
                 </View>
               </View>
               <Pressable style={styles.contents} onPress={toFamilyPostRead}>
@@ -39,15 +49,15 @@ function Family({ navigation }: FamilyScreenProps) {
               </Pressable>
               <View style={styles.contentsInfo}>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <EmotionIcon />
                   <Text>6</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <CommentIcon />
                   <Text>3</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <ViewsIcon />
                   <Text>300</Text>
                 </Pressable>
               </View>
@@ -55,11 +65,11 @@ function Family({ navigation }: FamilyScreenProps) {
           </View>
           <View style={styles.reactionWrapper}>
             <Pressable style={styles.reaction}>
-              <EmotionImage />
+              <Emotion2Icon />
               <Text>표정짓기</Text>
             </Pressable>
             <Pressable style={styles.reaction}>
-              <EmotionImage />
+              <Comment2Icon />
               <Text>댓글달기</Text>
             </Pressable>
             <Pressable style={styles.reaction}>
@@ -70,11 +80,17 @@ function Family({ navigation }: FamilyScreenProps) {
         <View>
           <View style={commonStyles.container}>
             <View>
-              <View style={styles.writerWrapper}>
+              <View style={[styles.writerWrapper, { marginBottom: 20 }]}>
                 <ProfileImage width={44} height={44} />
                 <View>
-                  <Text style={styles.writerInfo}>닉네임</Text>
-                  <Text style={styles.writerSubInfo}>10분전</Text>
+                  <Text
+                    size={18}
+                    style={(commonStyles.fontBold, { marginBottom: 4 })}>
+                    닉네임
+                  </Text>
+                  <Text size={14} color="#6D6B69">
+                    10분전
+                  </Text>
                 </View>
               </View>
               <Pressable style={styles.contents} onPress={toFamilyPostRead}>
@@ -85,15 +101,15 @@ function Family({ navigation }: FamilyScreenProps) {
               </Pressable>
               <View style={styles.contentsInfo}>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <EmotionIcon />
                   <Text>6</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <CommentIcon />
                   <Text>3</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
-                  <EmotionImage />
+                  <ViewsIcon />
                   <Text>300</Text>
                 </Pressable>
               </View>
@@ -101,11 +117,11 @@ function Family({ navigation }: FamilyScreenProps) {
           </View>
           <View style={styles.reactionWrapper}>
             <Pressable style={styles.reaction}>
-              <EmotionImage />
+              <Emotion2Icon />
               <Text>표정짓기</Text>
             </Pressable>
             <Pressable style={styles.reaction}>
-              <EmotionImage />
+              <Comment2Icon />
               <Text>댓글달기</Text>
             </Pressable>
             <Pressable style={styles.reaction}>
@@ -122,7 +138,6 @@ const styles = StyleSheet.create({
   writerWrapper: {
     flexDirection: 'row',
     gap: 8,
-    marginBottom: 20,
   },
   contentsImage: {
     height: 235,
@@ -157,15 +172,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  writerInfo: {
-    marginBottom: 4,
-    fontFamily: 'Pretendard-Bold',
-    fontSize: 18,
-  },
-  writerSubInfo: {
-    color: '#6D6B69',
-    fontSize: 14,
   },
   contents: {
     gap: 8,

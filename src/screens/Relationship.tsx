@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, TextInput, View } from 'react-native';
-import { CustomText as Text } from '../components/CustomText';
+import { View } from 'react-native';
 import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
@@ -17,6 +16,9 @@ import { RootState } from '../store/reducer';
 import { useAppDispatch } from '../store';
 import userSlice from '../slices/user';
 import { commonStyles } from '../styles/common';
+import Label from '../components/Label';
+import LabelInput from '../components/LabelInput';
+import Button from '../components/Button';
 
 type FamilyGroupAddProps = NativeStackScreenProps<
   FamilyGroupAddStackParamList,
@@ -26,7 +28,6 @@ type RootProps = NativeStackNavigationProp<RootStackParamList>;
 
 function Relationship({ route }: FamilyGroupAddProps) {
   const accessToken = useSelector((state: RootState) => state.user.accessToken);
-  const [isCodeFocused, setIsCodeFocused] = useState(false);
   const [relationship, setRelationship] = useState('');
   const rootNavigation = useNavigation<RootProps>();
   const { familyId, familyName } = route.params;
@@ -54,78 +55,21 @@ function Relationship({ route }: FamilyGroupAddProps) {
 
   return (
     <SafeAreaView style={commonStyles.container}>
-      <Header label="가족 그룹 생성" />
-      <View style={styles.body}>
-        <Text style={[styles.text, styles.label]}>
-          {familyName}님과의 관계가 어떻게 되시나요?
-        </Text>
-        <View
-          style={[
-            styles.inputBox,
-            {
-              borderWidth: isCodeFocused ? 1 : undefined,
-              borderColor: isCodeFocused ? '#FF9432' : undefined,
-              backgroundColor: isCodeFocused ? '#FFFFFF' : '#F4F4F4',
-            },
-          ]}>
-          <Text
-            style={[
-              styles.inputLabel,
-              { color: isCodeFocused ? '#FF9432' : '#6D6B69' },
-            ]}>
-            관계
-          </Text>
-          <TextInput
-            style={styles.input}
-            placeholder="딸"
-            placeholderTextColor={'#939393'}
-            onFocus={() => setIsCodeFocused(true)}
-            onBlur={() => setIsCodeFocused(false)}
-            onChangeText={text => setRelationship(text)}
-          />
-        </View>
+      <Header text="가족 그룹 생성" />
+      <View style={[commonStyles.flex, { marginTop: 40 }]}>
+        <Label
+          style={{ marginBottom: 16 }}
+          text={`${familyName}님과의 관계가 어떻게 되시나요?`}
+        />
+        <LabelInput
+          text="관계"
+          placeholder="딸"
+          onChangeText={setRelationship}
+        />
       </View>
-      <Pressable style={styles.nextButton} onPress={makeFamily}>
-        <Text style={[styles.text, styles.nextText]}>다음</Text>
-      </Pressable>
+      <Button text="다음" onPress={makeFamily} />
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  body: {
-    marginTop: 40,
-    flex: 1,
-  },
-  label: {
-    fontSize: 20,
-    marginBottom: 27,
-  },
-  text: {
-    fontFamily: 'Pretendard-Bold',
-    fontWeight: '700',
-  },
-  input: { fontSize: 16 },
-  inputBox: {
-    height: 57,
-    borderRadius: 8,
-    padding: 10,
-  },
-  inputLabel: {
-    fontFamily: 'Pretendard-Medium',
-    fontSize: 12,
-    marginBottom: 6,
-  },
-  nextButton: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16.5,
-    borderRadius: 11,
-    backgroundColor: '#FF9432',
-  },
-  nextText: {
-    color: '#FFFFFF',
-  },
-});
 
 export default Relationship;
