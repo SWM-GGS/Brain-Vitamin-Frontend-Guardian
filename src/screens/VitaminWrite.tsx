@@ -80,7 +80,9 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
             <CloseIcon />
           </Pressable>
         </View>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          nestedScrollEnabled={true}>
           <TouchableWithoutFeedback>
             <View style={{ gap: 34 }}>
               <View style={[commonStyles.itemsCenter, { gap: 19 }]}>
@@ -109,6 +111,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
                       }}
                       containerStyle={{ width: 166 }}
                       textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+                      listMode="SCROLLVIEW"
                     />
                     <DropDownPicker
                       open={openSeason}
@@ -126,6 +129,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
                       }}
                       containerStyle={{ width: 166 }}
                       textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+                      listMode="SCROLLVIEW"
                     />
                   </View>
                 </View>
@@ -169,6 +173,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
                       borderColor: openMembers ? '#FF9432' : '#E8E8E8',
                     }}
                     textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+                    listMode="SCROLLVIEW"
                   />
                 </View>
               </View>
