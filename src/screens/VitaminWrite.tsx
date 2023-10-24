@@ -4,6 +4,7 @@ import {
   Pressable,
   ScrollView,
   StyleSheet,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
@@ -79,95 +80,101 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
             <CloseIcon />
           </Pressable>
         </View>
-        <ScrollView contentContainerStyle={commonStyles.flex}>
-          {/* TODO: scroll 안 되는 문제 해결. nested scroll 문제 해결 */}
-          <View
-            style={[commonStyles.itemsCenter, { gap: 19, marginBottom: 34 }]}>
-            <View style={styles.image} />
-            <Text color="#433D3A" style={commonStyles.textCenter}>
-              {`아래 들어가는 사진 정보는 ${familyName}님만을 위한${'\n'}인지 기능향상 문제 생성에 활용돼요`}
-            </Text>
-          </View>
-          <View style={{ gap: 32 }}>
-            <View style={{ gap: 16 }}>
-              <Text style={commonStyles.fontMedium}>언제 찍었나요?</Text>
-              <View style={[commonStyles.flexRow, { gap: 8 }]}>
-                <DropDownPicker
-                  open={openYear}
-                  setOpen={setOpenYear}
-                  items={itemsYear}
-                  setItems={setItemsYear}
-                  value={valueYear}
-                  setValue={setValueYear}
-                  onChangeValue={v => setYear(v)}
-                  placeholder="연도 선택"
-                  maxHeight={300}
-                  style={{
-                    height: 57,
-                    borderColor: openYear ? '#FF9432' : '#E8E8E8',
-                  }}
-                  containerStyle={{ width: 166 }}
-                  textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
-                />
-                <DropDownPicker
-                  open={openSeason}
-                  setOpen={setOpenSeason}
-                  items={itemsSeason}
-                  setItems={setItemsSeason}
-                  value={valueSeason}
-                  setValue={setValueSeason}
-                  onChangeValue={v => setSeason(v)}
-                  placeholder="계절 선택"
-                  maxHeight={300}
-                  style={{
-                    height: 57,
-                    borderColor: openSeason ? '#FF9432' : '#E8E8E8',
-                  }}
-                  containerStyle={{ width: 166 }}
-                  textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
-                />
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <TouchableWithoutFeedback>
+            <View style={{ gap: 34 }}>
+              <View style={[commonStyles.itemsCenter, { gap: 19 }]}>
+                <View style={styles.image} />
+                <Text color="#433D3A" style={commonStyles.textCenter}>
+                  {`아래 들어가는 사진 정보는 ${familyName}님만을 위한${'\n'}인지 기능향상 문제 생성에 활용돼요`}
+                </Text>
               </View>
+              <View style={{ gap: 32 }}>
+                <View style={{ gap: 16 }}>
+                  <Text style={commonStyles.fontMedium}>언제 찍었나요?</Text>
+                  <View style={[commonStyles.flexRow, { gap: 8 }]}>
+                    <DropDownPicker
+                      open={openYear}
+                      setOpen={setOpenYear}
+                      items={itemsYear}
+                      setItems={setItemsYear}
+                      value={valueYear}
+                      setValue={setValueYear}
+                      onChangeValue={v => setYear(v)}
+                      placeholder="연도 선택"
+                      maxHeight={300}
+                      style={{
+                        height: 57,
+                        borderColor: openYear ? '#FF9432' : '#E8E8E8',
+                      }}
+                      containerStyle={{ width: 166 }}
+                      textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+                    />
+                    <DropDownPicker
+                      open={openSeason}
+                      setOpen={setOpenSeason}
+                      items={itemsSeason}
+                      setItems={setItemsSeason}
+                      value={valueSeason}
+                      setValue={setValueSeason}
+                      onChangeValue={v => setSeason(v)}
+                      placeholder="계절 선택"
+                      maxHeight={300}
+                      style={{
+                        height: 57,
+                        borderColor: openSeason ? '#FF9432' : '#E8E8E8',
+                      }}
+                      containerStyle={{ width: 166 }}
+                      textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+                    />
+                  </View>
+                </View>
+                <View style={{ gap: 16 }}>
+                  <Text style={commonStyles.fontMedium}>
+                    어디에서 찍었나요?
+                  </Text>
+                  <LabelInput
+                    text="장소"
+                    placeholder="장소를 입력해주세요"
+                    onChangeText={setPlace}
+                  />
+                </View>
+                <View style={{ gap: 16 }}>
+                  <Text style={commonStyles.fontMedium}>
+                    사진에 몇 명이 있나요?
+                  </Text>
+                  <LabelInput
+                    text="인원"
+                    placeholder="숫자를 입력해주세요"
+                    onChangeText={setHeadCount}
+                  />
+                </View>
+                <View style={{ gap: 16 }}>
+                  <Text style={commonStyles.fontMedium}>
+                    사진에 누가 있나요?
+                  </Text>
+                  <DropDownPicker
+                    open={openMembers}
+                    setOpen={setOpenMembers}
+                    items={itemsMembers}
+                    setItems={setItemsMembers}
+                    value={valueMembers}
+                    setValue={setValueMembers}
+                    onChangeValue={v => setMembers(v)}
+                    placeholder="우리 가족 구성원 중에 선택하기"
+                    maxHeight={300}
+                    multiple={true}
+                    style={{
+                      height: 57,
+                      borderColor: openMembers ? '#FF9432' : '#E8E8E8',
+                    }}
+                    textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
+                  />
+                </View>
+              </View>
+              <Button text="저장" onPress={handleVitaminSave} />
             </View>
-            <View style={{ gap: 16 }}>
-              <Text style={commonStyles.fontMedium}>어디에서 찍었나요?</Text>
-              <LabelInput
-                text="장소"
-                placeholder="장소를 입력해주세요"
-                onChangeText={setPlace}
-              />
-            </View>
-            <View style={{ gap: 16 }}>
-              <Text style={commonStyles.fontMedium}>
-                사진에 몇 명이 있나요?
-              </Text>
-              <LabelInput
-                text="인원"
-                placeholder="숫자를 입력해주세요"
-                onChangeText={setHeadCount}
-              />
-            </View>
-            <View style={{ gap: 16 }}>
-              <Text style={commonStyles.fontMedium}>사진에 누가 있나요?</Text>
-              <DropDownPicker
-                open={openMembers}
-                setOpen={setOpenMembers}
-                items={itemsMembers}
-                setItems={setItemsMembers}
-                value={valueMembers}
-                setValue={setValueMembers}
-                onChangeValue={v => setMembers(v)}
-                placeholder="우리 가족 구성원 중에 선택하기"
-                maxHeight={300}
-                multiple={true}
-                style={{
-                  height: 57,
-                  borderColor: openMembers ? '#FF9432' : '#E8E8E8',
-                }}
-                textStyle={{ fontSize: 16 + (fontSize - 1) * 2 }}
-              />
-            </View>
-          </View>
-          <Button text="저장" onPress={handleVitaminSave} />
+          </TouchableWithoutFeedback>
         </ScrollView>
       </Pressable>
     </Pressable>
