@@ -1,6 +1,8 @@
 import { StyleSheet } from 'react-native';
 
 export const commonStyles = StyleSheet.create({
+  flex: { flex: 1 },
+  flexRow: { flexDirection: 'row' },
   pack: {
     display: 'flex',
     justifyContent: 'center',
@@ -9,6 +11,8 @@ export const commonStyles = StyleSheet.create({
   justifyBetween: {
     justifyContent: 'space-between',
   },
+  justifyAround: { justifyContent: 'space-around' },
+  itemsCenter: { alignItems: 'center' },
   nextButton: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -72,7 +76,7 @@ export const commonStyles = StyleSheet.create({
   borderBottom: { borderBottomColor: '#F4F4F4', borderBottomWidth: 2 },
   fontMedium: { fontFamily: 'Pretendard-Medium', fontWeight: '500' },
   fontBold: { fontFamily: 'Pretendard-Bold', fontWeight: '700' },
-  flex: { flex: 1 },
-  flexRow: { flexDirection: 'row' },
   textOrange: { color: '#FF9432' },
+  textWhite: { color: 'white' },
+  textCenter: { textAlign: 'center' },
 });

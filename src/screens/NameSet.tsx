@@ -23,7 +23,7 @@ function NameSet({ navigation }: Props) {
 
   return (
     <SafeAreaView style={commonStyles.container}>
-      <Header label="회원가입" />
+      <Header text="회원가입" />
       <ProgressStep currentStep={3} />
       <View style={[commonStyles.flex, { marginTop: 40 }]}>
         <View style={{ marginBottom: 32 }}>

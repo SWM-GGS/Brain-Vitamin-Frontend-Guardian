@@ -16,20 +16,25 @@ function LogIn({ navigation }: LogInScreenProps) {
 
   return (
     <View style={[commonStyles.container, commonStyles.justifyBetween]}>
-      <View style={styles.logoContainer}>
+      <View style={[commonStyles.flex, commonStyles.pack]}>
         <Logo width={320} />
       </View>
-      <View style={styles.buttonWrapper}>
-        <Pressable style={[styles.button, styles.kakaoButton]}>
-          <View style={styles.align}>
+      <View style={{ marginBottom: 22 }}>
+        <Pressable
+          style={[styles.button, styles.kakaoButton, { marginBottom: 10 }]}>
+          <View style={[commonStyles.flexRow, commonStyles.itemsCenter]}>
             <Kakao />
-            <Text style={[styles.text, styles.kakaoText]}>카카오 로그인</Text>
+            <Text
+              color="#3A3A3A"
+              style={[commonStyles.fontBold, { marginLeft: 10.5 }]}>
+              카카오 로그인
+            </Text>
           </View>
         </Pressable>
         <Pressable
           style={[styles.button, styles.signUpButton]}
           onPress={toSignUp}>
-          <Text style={[styles.text, styles.signUpText]}>
+          <Text color="white" style={commonStyles.fontBold}>
             전화번호로 시작하기
           </Text>
         </Pressable>
@@ -39,40 +44,16 @@ function LogIn({ navigation }: LogInScreenProps) {
 }
 
 const styles = StyleSheet.create({
-  logoContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonWrapper: {
-    marginBottom: 22,
-  },
-  align: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
     padding: 16.5,
     borderRadius: 11,
   },
-  text: {
-    fontFamily: 'Pretendard-Bold',
-    fontWeight: '700',
-  },
   kakaoButton: {
     backgroundColor: '#FEE500',
-    marginBottom: 10,
-  },
-  kakaoText: {
-    color: '#3A3A3A',
-    marginLeft: 10.5,
   },
   signUpButton: { backgroundColor: '#FF9432' },
-  signUpText: {
-    color: '#FFFFFF',
-  },
 });
 
 export default LogIn;

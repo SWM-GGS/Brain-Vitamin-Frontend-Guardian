@@ -103,7 +103,7 @@ function FamilyKey() {
                 style={(commonStyles.fontBold, { marginBottom: 4 })}>
                 {searchResult.familyName}네 가족
               </Text>
-              <Text style={styles.familyNameSub}>
+              <Text color="#433D3A">
                 {searchResult.firstUserName}님 외{' '}
                 {'' + (searchResult.memberCount - 1)}명
               </Text>
@@ -111,7 +111,7 @@ function FamilyKey() {
           </Pressable>
         )}
         {isNotFound && (
-          <Text size={14} style={styles.empty}>
+          <Text size={14} color="#FF5454">
             해당 가족이 없습니다. 다시 입력해주세요
           </Text>
         )}
@@ -139,12 +139,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 15,
     paddingHorizontal: 19,
-  },
-  familyNameSub: {
-    color: '#433D3A',
-  },
-  empty: {
-    color: '#FF5454',
   },
 });
 

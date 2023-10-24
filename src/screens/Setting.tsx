@@ -22,7 +22,7 @@ function Setting() {
 
   return (
     <SafeAreaView edges={['top']} style={commonStyles.container}>
-      <Header label="설정" />
+      <Header text="설정" />
       <View style={[commonStyles.menuBox, { marginTop: 26 }]}>
         <Pressable
           style={[commonStyles.menu, commonStyles.borderBottom]}
