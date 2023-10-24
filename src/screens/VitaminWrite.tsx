@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   Dimensions,
+  ImageBackground,
   Pressable,
   ScrollView,
   StyleSheet,
@@ -86,7 +87,13 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
           <TouchableWithoutFeedback>
             <View style={{ gap: 34 }}>
               <View style={[commonStyles.itemsCenter, { gap: 19 }]}>
-                <View style={styles.image} />
+                <ImageBackground
+                  style={styles.image}
+                  borderRadius={4}
+                  source={{
+                    uri: 'https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcRoT6NNDUONDQmlthWrqIi_frTjsjQT4UZtsJsuxqxLiaFGNl5s3_pBIVxS6-VsFUP_',
+                  }}
+                />
                 <Text color="#433D3A" style={commonStyles.textCenter}>
                   {`아래 들어가는 사진 정보는 ${familyName}님만을 위한${'\n'}인지 기능향상 문제 생성에 활용돼요`}
                 </Text>
@@ -207,8 +214,6 @@ const styles = StyleSheet.create({
   image: {
     width: 223,
     height: 223,
-    borderRadius: 4,
-    backgroundColor: 'tomato',
   },
 });
 
