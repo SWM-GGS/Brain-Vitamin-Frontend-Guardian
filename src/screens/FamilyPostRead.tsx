@@ -13,9 +13,20 @@ import Header from '../components/Header';
 import { useModal } from '../hooks/useModal';
 import VitaminWrite from './VitaminWrite';
 import LayerPopup from '../components/LayerPopup';
+import Report from './Report';
 
 function FamilyPostRead() {
   const { isModalOpen, modalText, openModal, closeModal } = useModal();
+
+  const renderModal = () => {
+    if (modalText === '비타민') {
+      return <VitaminWrite closeModal={closeModal} />;
+    } else if (modalText === '신고') {
+      return <Report closeModal={closeModal} />;
+    } else {
+      return <LayerPopup label={modalText} closeModal={closeModal} />;
+    }
+  };
 
   return (
     <SafeAreaView>
@@ -105,11 +116,13 @@ function FamilyPostRead() {
                     style={[commonStyles.fontMedium, { marginBottom: 15 }]}>
                     답글달기
                   </Text>
-                  <Text
-                    size={14}
-                    style={[commonStyles.fontMedium, { marginBottom: 15 }]}>
-                    신고
-                  </Text>
+                  <Pressable onPress={() => openModal('신고')}>
+                    <Text
+                      size={14}
+                      style={[commonStyles.fontMedium, { marginBottom: 15 }]}>
+                      신고
+                    </Text>
+                  </Pressable>
                 </View>
                 <View style={styles.recommentArea}>
                   <View style={styles.writerWrapper}>
@@ -208,12 +221,7 @@ function FamilyPostRead() {
           </View>
         </View>
       </ScrollView>
-      {isModalOpen &&
-        (modalText === '비타민' ? (
-          <VitaminWrite closeModal={closeModal} />
-        ) : (
-          <LayerPopup label={modalText} closeModal={closeModal} />
-        ))}
+      {isModalOpen && renderModal()}
     </SafeAreaView>
   );
 }
