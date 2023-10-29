@@ -6,17 +6,17 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 
 type InputProps = {
-  text: string;
   placeholder: string;
   onChangeText: React.Dispatch<React.SetStateAction<string>>;
+  text?: string;
   isShort?: boolean;
   editable?: boolean;
 };
 
 function LabelInput({
-  text,
   placeholder,
   onChangeText,
+  text,
   isShort,
   editable,
 }: Readonly<InputProps>) {
@@ -32,14 +32,16 @@ function LabelInput({
           backgroundColor: isFocused ? '#FFFFFF' : '#F4F4F4',
         },
       ]}>
-      <Text
-        size={12}
-        style={[
-          commonStyles.fontMedium,
-          { color: isFocused ? '#FF9432' : '#6D6B69' },
-        ]}>
-        {text}
-      </Text>
+      {text ? (
+        <Text
+          size={12}
+          style={[
+            commonStyles.fontMedium,
+            { color: isFocused ? '#FF9432' : '#6D6B69' },
+          ]}>
+          {text}
+        </Text>
+      ) : null}
       <TextInput
         style={styles(fontSize, isShort ?? false).input}
         placeholder={placeholder}
@@ -63,6 +65,7 @@ const styles = (fontSize: number, isShort: boolean) =>
       padding: 10,
       gap: 5,
       borderWidth: 1,
+      justifyContent: 'center',
     },
   });
 

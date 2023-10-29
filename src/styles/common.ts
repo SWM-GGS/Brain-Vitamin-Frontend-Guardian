@@ -12,7 +12,9 @@ export const commonStyles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   justifyAround: { justifyContent: 'space-around' },
+  justifyEnd: { justifyContent: 'flex-end' },
   itemsCenter: { alignItems: 'center' },
+  itemsEnd: { alignItems: 'flex-end' },
   nextButton: {
     justifyContent: 'center',
     alignItems: 'center',

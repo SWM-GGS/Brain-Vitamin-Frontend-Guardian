@@ -18,12 +18,12 @@ import LabelInput from '../components/LabelInput';
 import Button from '../components/Button';
 import DropDownPicker, { ValueType } from 'react-native-dropdown-picker';
 
-const windowHeight = Dimensions.get('window').height;
+export const windowHeight = Dimensions.get('window').height;
 
-type Props = {
+export type PopupProps = {
   closeModal: () => void;
 };
-function VitaminWrite({ closeModal }: Readonly<Props>) {
+function VitaminWrite({ closeModal }: Readonly<PopupProps>) {
   const { familyName, fontSize } = useSelector(
     (state: RootState) => state.user,
   );
@@ -99,7 +99,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
                 </Text>
               </View>
               <View style={{ gap: 32 }}>
-                <View style={{ gap: 16 }}>
+                <View style={{ gap: 16, zIndex: 100 }}>
                   <Text style={commonStyles.fontMedium}>언제 찍었나요?</Text>
                   <View style={[commonStyles.flexRow, { gap: 8 }]}>
                     <DropDownPicker
@@ -111,7 +111,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
                       setValue={setValueYear}
                       onChangeValue={v => setYear(v)}
                       placeholder="연도 선택"
-                      maxHeight={300}
+                      maxHeight={200}
                       style={{
                         height: 57,
                         borderColor: openYear ? '#FF9432' : '#E8E8E8',
@@ -129,7 +129,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
                       setValue={setValueSeason}
                       onChangeValue={v => setSeason(v)}
                       placeholder="계절 선택"
-                      maxHeight={300}
+                      maxHeight={200}
                       style={{
                         height: 57,
                         borderColor: openSeason ? '#FF9432' : '#E8E8E8',
@@ -160,7 +160,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
                     onChangeText={setHeadCount}
                   />
                 </View>
-                <View style={{ gap: 16 }}>
+                <View style={{ gap: 16, zIndex: 100 }}>
                   <Text style={commonStyles.fontMedium}>
                     사진에 누가 있나요?
                   </Text>
@@ -173,7 +173,7 @@ function VitaminWrite({ closeModal }: Readonly<Props>) {
                     setValue={setValueMembers}
                     onChangeValue={v => setMembers(v)}
                     placeholder="우리 가족 구성원 중에 선택하기"
-                    maxHeight={300}
+                    maxHeight={200}
                     multiple={true}
                     style={{
                       height: 57,
