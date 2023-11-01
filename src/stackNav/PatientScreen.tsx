@@ -3,11 +3,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Patient from '../screens/Patient';
 import PatientActivity from '../screens/PatientActivity';
 import PatientAnalyze from '../screens/PatientAnalyze';
+import FamilyGroupScreen from './FamilyGroupScreen';
 
 export type PatientScreenStackParamList = {
   Patient: undefined;
   PatientActivity: undefined;
   PatientAnalyze: undefined;
+  FamilyGroupScreen: undefined;
 };
 
 const PatientScreenStack =
@@ -24,6 +26,10 @@ function PatientScreen() {
       <PatientScreenStack.Screen
         name="PatientAnalyze"
         component={PatientAnalyze}
+      />
+      <PatientScreenStack.Screen
+        name="FamilyGroupScreen"
+        component={FamilyGroupScreen}
       />
     </PatientScreenStack.Navigator>
   );
