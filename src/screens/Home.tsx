@@ -1,7 +1,6 @@
 import React from 'react';
 import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
-import Pill from '../assets/images/pill.svg';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeScreenStackParamList } from '../stackNav/HomeScreen';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -14,6 +13,7 @@ import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import ArrowRight from '../assets/images/arrowRight.svg';
 import { commonStyles } from '../styles/common';
 import Label from '../components/Label';
+import WeeklyActivity from '../components/WeeklyActivity';
 
 type HomeScreenProps = NativeStackNavigationProp<
   HomeScreenStackParamList,
@@ -40,47 +40,7 @@ function Home() {
   return (
     <SafeAreaView edges={['top']}>
       <ScrollView>
-        <View style={[commonStyles.container, styles.weekly]}>
-          <View style={styles.header}>
-            <Label
-              style={{ marginBottom: 20 }}
-              text={`닉네임님의 7월 첫째주${'\n'}두뇌 비타민 주간 활동`}
-            />
-            <Pressable onPress={toFamilyGroup}>
-              <Text>가족관리</Text>
-            </Pressable>
-          </View>
-          <Pressable style={styles.dayWrapper}>
-            <View style={styles.dayBox}>
-              <Pill />
-              <Text size={14}>월</Text>
-            </View>
-            <View style={styles.dayBox}>
-              <Pill />
-              <Text size={14}>화</Text>
-            </View>
-            <View style={styles.dayBox}>
-              <Pill />
-              <Text size={14}>수</Text>
-            </View>
-            <View style={styles.dayBox}>
-              <Pill />
-              <Text size={14}>목</Text>
-            </View>
-            <View style={styles.dayBox}>
-              <Pill />
-              <Text size={14}>금</Text>
-            </View>
-            <View style={styles.dayBox}>
-              <Pill />
-              <Text size={14}>토</Text>
-            </View>
-            <View style={styles.dayBox}>
-              <Pill />
-              <Text size={14}>일</Text>
-            </View>
-          </Pressable>
-        </View>
+        <WeeklyActivity toFamilyGroup={toFamilyGroup} />
         <View style={styles.familyContainer}>
           <View style={[styles.familyTitle, styles.header]}>
             <Label style={{ marginBottom: 20 }} text="우리 가족 이야기" />
@@ -163,19 +123,6 @@ function Home() {
 }
 
 const styles = StyleSheet.create({
-  weekly: {
-    backgroundColor: '#FFFFFF',
-    borderBottomLeftRadius: 13,
-    borderBottomRightRadius: 13,
-    shadowColor: 'rgb(0, 0, 0)',
-    shadowOpacity: 0.1,
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowRadius: 18,
-    elevation: 18,
-  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -183,22 +130,6 @@ const styles = StyleSheet.create({
   },
   familyTitle: {
     paddingHorizontal: 16,
-  },
-  dayWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    // backgroundColor: 'black',
-  },
-  dayBox: {
-    width: 46,
-    height: 53,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1.5,
-    borderStyle: 'solid',
-    bordeRadius: 7,
-    borderColor: '#FF9432',
-    // overflow: 'hidden',
   },
   familyContainer: {
     paddingTop: 24,

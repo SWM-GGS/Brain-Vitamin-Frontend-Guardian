@@ -4,7 +4,6 @@ export const commonStyles = StyleSheet.create({
   flex: { flex: 1 },
   flexRow: { flexDirection: 'row' },
   pack: {
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
   },
