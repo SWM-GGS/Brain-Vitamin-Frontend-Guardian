@@ -10,7 +10,7 @@ import { PatientScreenStackParamList } from '../stackNav/PatientScreen';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/reducer';
 import Label from '../components/Label';
-import RadarChart from '../components/RadarChart';
+import { RadarChart } from '@salmonco/react-native-radar-chart';
 import { LineChart } from 'react-native-gifted-charts';
 
 type PatientScreenProps = NativeStackNavigationProp<
