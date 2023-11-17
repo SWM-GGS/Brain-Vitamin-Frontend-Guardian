@@ -30,6 +30,7 @@ function AppInner() {
     (state: RootState) => !!state.user.phoneNumber,
   );
   const [isFirstRun, setIsFirstRun] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
     const getFirstRunStatus = async () => {
@@ -37,6 +38,12 @@ function AppInner() {
       setIsFirstRun(firstRunStatus);
     };
     getFirstRunStatus();
+
+    const timer = setTimeout(() => {
+      setShowSplash(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
   }, []);
 
   // 앱 실행 시 refreshToken 있으면 자동 로그인
@@ -112,7 +119,7 @@ function AppInner() {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name="Splash" component={Splash} /> */}
+      {showSplash && <Stack.Screen name="Splash" component={Splash} />}
       {isLoggedIn ? (
         <Stack.Screen name="Main" component={Main} />
       ) : (
