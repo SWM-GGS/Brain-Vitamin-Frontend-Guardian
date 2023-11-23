@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
   dayWrapper: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    // backgroundColor: 'black',
   },
   dayBox: {
     width: 46,
@@ -90,9 +89,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 1.5,
     borderStyle: 'solid',
-    bordeRadius: 7,
+    borderRadius: 10,
     borderColor: '#FF9432',
-    // overflow: 'hidden',
   },
 });
 

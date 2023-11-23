@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { CustomText as Text } from '../components/CustomText';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { HomeScreenStackParamList } from '../stackNav/HomeScreen';
@@ -53,29 +53,45 @@ function Home() {
           </View>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <Pressable style={styles.familyBox}>
-              <View style={styles.familyImage}>
-                <Text>사진</Text>
-              </View>
+              <Image
+                style={styles.familyImage}
+                source={require('../assets/images/family1.png')}
+              />
               <View style={styles.familyContents}>
                 <View style={styles.familyContentsSub}>
-                  <Text size={12}>1시간 전</Text>
+                  <Text size={12}>34분 전</Text>
                   <Text size={12}>표정 3</Text>
                   <Text size={12}>댓글 3</Text>
                 </View>
-                <Text>이번 여름 휴가로 갔던 속초 사진들 올려요ㅎㅎ</Text>
+                <Text>이번 여름 휴가로 갔던 태백산 사진들 올려요ㅎㅎ</Text>
               </View>
             </Pressable>
             <Pressable style={styles.familyBox}>
-              <View style={styles.familyImage}>
-                <Text>사진</Text>
-              </View>
+              <Image
+                style={styles.familyImage}
+                source={require('../assets/images/family2.png')}
+              />
               <View style={styles.familyContents}>
                 <View style={styles.familyContentsSub}>
                   <Text size={12}>1시간 전</Text>
-                  <Text size={12}>표정 3</Text>
-                  <Text size={12}>댓글 3</Text>
+                  <Text size={12}>표정 2</Text>
+                  <Text size={12}>댓글 4</Text>
                 </View>
-                <Text>이번 여름 휴가로 갔던 속초 사진들 올려요ㅎㅎ</Text>
+                <Text>지난번 속초에서 찍은 사진들</Text>
+              </View>
+            </Pressable>
+            <Pressable style={styles.familyBox}>
+              <Image
+                style={styles.familyImage}
+                source={require('../assets/images/family3.png')}
+              />
+              <View style={styles.familyContents}>
+                <View style={styles.familyContentsSub}>
+                  <Text size={12}>3시간 전</Text>
+                  <Text size={12}>표정 3</Text>
+                  <Text size={12}>댓글 6</Text>
+                </View>
+                <Text>우리 조카랑 재밌게 놀고 사진도 찍었어요~ ㅎㅎ</Text>
               </View>
             </Pressable>
           </ScrollView>
@@ -99,9 +115,12 @@ function Home() {
                 미추홀구 주변에 괜찮은 요양원 추천해주세요
               </Text>
             </View>
-            <View style={styles.neighborImage}>
-              <Text>사진</Text>
-            </View>
+            <Image
+              style={styles.neighborImage}
+              source={{
+                uri: 'https://cdn.ulsanpress.net/news/photo/201912/341881_135047_742.jpg',
+              }}
+            />
           </Pressable>
           <Pressable style={styles.neighborBox}>
             <View>
@@ -112,9 +131,12 @@ function Home() {
                 미추홀구 주변에 괜찮은 요양원 추천해주세요
               </Text>
             </View>
-            <View style={styles.neighborImage}>
-              <Text>사진</Text>
-            </View>
+            <Image
+              style={styles.neighborImage}
+              source={{
+                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnEq_DjSxdDG3JSqCeWvZprIa7cptNq3j_Mg&usqp=CAU',
+              }}
+            />
           </Pressable>
         </View>
       </ScrollView>
@@ -153,9 +175,9 @@ const styles = StyleSheet.create({
   },
   familyImage: {
     flex: 1.5,
-    backgroundColor: 'tomato',
     borderTopLeftRadius: 13,
     borderTopRightRadius: 13,
+    width: '100%',
   },
   familyContents: {
     flex: 1,
@@ -167,7 +189,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   neighborBox: {
-    height: 90,
+    height: 100,
     backgroundColor: '#FFFFFF',
     borderRadius: 13,
     shadowColor: 'rgb(0, 0, 0)',
