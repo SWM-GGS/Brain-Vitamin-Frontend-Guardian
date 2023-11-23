@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, ScrollView, StyleSheet, View } from 'react-native';
+import { Image, Pressable, ScrollView, StyleSheet, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ProfileImage from '../assets/images/myPage.svg';
 import { CustomText as Text } from '../components/CustomText';
@@ -34,23 +34,24 @@ function Family({ navigation }: FamilyScreenProps) {
                   <Text
                     size={18}
                     style={(commonStyles.fontBold, { marginBottom: 4 })}>
-                    닉네임
+                    쥬스
                   </Text>
                   <Text size={14} color="#6D6B69">
-                    10분전
+                    34분전
                   </Text>
                 </View>
               </View>
               <Pressable style={styles.contents} onPress={toFamilyPostRead}>
-                <Text>이번 여름 휴가로 갔던 속초 사진들 올려요ㅎㅎ</Text>
-                <View style={styles.contentsImage}>
-                  <Text>사진</Text>
-                </View>
+                <Text>이번 여름 휴가로 갔던 태백산 사진들 올려요ㅎㅎ</Text>
+                <Image
+                  style={styles.contentsImage}
+                  source={require('../assets/images/family1.png')}
+                />
               </Pressable>
               <View style={styles.contentsInfo}>
                 <Pressable style={styles.infoBox}>
                   <EmotionIcon />
-                  <Text>6</Text>
+                  <Text>3</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
                   <CommentIcon />
@@ -58,7 +59,7 @@ function Family({ navigation }: FamilyScreenProps) {
                 </Pressable>
                 <Pressable style={styles.infoBox}>
                   <ViewsIcon />
-                  <Text>300</Text>
+                  <Text>24</Text>
                 </Pressable>
               </View>
             </View>
@@ -86,31 +87,85 @@ function Family({ navigation }: FamilyScreenProps) {
                   <Text
                     size={18}
                     style={(commonStyles.fontBold, { marginBottom: 4 })}>
-                    닉네임
+                    다람쥐
                   </Text>
                   <Text size={14} color="#6D6B69">
-                    10분전
+                    1시간 전
                   </Text>
                 </View>
               </View>
               <Pressable style={styles.contents} onPress={toFamilyPostRead}>
-                <Text>이번 여름 휴가로 갔던 속초 사진들 올려요ㅎㅎ</Text>
-                <View style={styles.contentsImage}>
-                  <Text>사진</Text>
-                </View>
+                <Text>지난번 속초에서 찍은 사진들</Text>
+                <Image
+                  style={styles.contentsImage}
+                  source={require('../assets/images/family2.png')}
+                />
               </Pressable>
               <View style={styles.contentsInfo}>
                 <Pressable style={styles.infoBox}>
                   <EmotionIcon />
-                  <Text>6</Text>
+                  <Text>2</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
                   <CommentIcon />
-                  <Text>3</Text>
+                  <Text>4</Text>
                 </Pressable>
                 <Pressable style={styles.infoBox}>
                   <ViewsIcon />
-                  <Text>300</Text>
+                  <Text>40</Text>
+                </Pressable>
+              </View>
+            </View>
+          </View>
+          <View style={styles.reactionWrapper}>
+            <Pressable style={styles.reaction}>
+              <Emotion2Icon />
+              <Text>표정짓기</Text>
+            </Pressable>
+            <Pressable style={styles.reaction}>
+              <Comment2Icon />
+              <Text>댓글달기</Text>
+            </Pressable>
+            <Pressable style={styles.reaction}>
+              <Text>공유하기</Text>
+            </Pressable>
+          </View>
+        </View>
+        <View>
+          <View style={commonStyles.container}>
+            <View>
+              <View style={[styles.writerWrapper, { marginBottom: 20 }]}>
+                <ProfileImage width={44} height={44} />
+                <View>
+                  <Text
+                    size={18}
+                    style={(commonStyles.fontBold, { marginBottom: 4 })}>
+                    소금빵
+                  </Text>
+                  <Text size={14} color="#6D6B69">
+                    3시간 전
+                  </Text>
+                </View>
+              </View>
+              <Pressable style={styles.contents} onPress={toFamilyPostRead}>
+                <Text>우리 조카랑 재밌게 놀고 사진도 찍었어요~ ㅎㅎ</Text>
+                <Image
+                  style={styles.contentsImage}
+                  source={require('../assets/images/family3.png')}
+                />
+              </Pressable>
+              <View style={styles.contentsInfo}>
+                <Pressable style={styles.infoBox}>
+                  <EmotionIcon />
+                  <Text>3</Text>
+                </Pressable>
+                <Pressable style={styles.infoBox}>
+                  <CommentIcon />
+                  <Text>6</Text>
+                </Pressable>
+                <Pressable style={styles.infoBox}>
+                  <ViewsIcon />
+                  <Text>62</Text>
                 </Pressable>
               </View>
             </View>
@@ -143,6 +198,7 @@ const styles = StyleSheet.create({
     height: 235,
     backgroundColor: 'tomato',
     borderRadius: 4,
+    width: '100%',
   },
   contentsInfo: {
     flexDirection: 'row',
