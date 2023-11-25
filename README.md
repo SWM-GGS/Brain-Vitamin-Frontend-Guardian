@@ -1,79 +1,78 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 경도인지장애 가정 케어 서비스, 두뇌비타민
 
-# Getting Started
+## 웹과 다른 점
+- `pages -> screens` / `router -> navigation`
+    - 스크린 구조 설계가 필요하다.
+- 폰트 사이즈 변경 어떻게?
+    - 웹에서처럼 폰트 사이즈 rem 등의 상대 단위로 작성해서 루트 폰트 사이즈만 변경하면 될 듯, but RN에선 그걸 못함
+    - 일일이 fontSize 변수 불러와서 작성
+    - fontSize 변수 작성하는 횟수를 줄이고자, 가장 자주 사용되는 폰트 사이즈(본문)를 모든 텍스트에 default 폰트 사이즈로 설정
+    - -> Text 컴포넌트 대신 CustomText 컴포넌트 사용
+- 회원가입 할 때 Progress step
+    - 한 스크린 내에서 스텝별 컴포넌트를 보였다가 숨기는 식으로 구성할지, 스텝별 스크린을 여러 개 만들어 놓고 스택 쌓는 구조로 구성할지?
+    - -> 후자로 만들었음
+ 
+## 상태 관리
+- 이름 name
+- 별명 nickname
+- 전화번호 phoneNumber
+- 가족 Id familyId
+- 가족 이름(환자 이름) familyName
+- 폰트 사이즈 fontSize
+- 프로필 이미지 profileImgUrl
+- accessToken
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 스크린 구조
+Stack.Navigator
+- 스플래시 Splash (Screen)
+- Auth (Stack.Navigator)
+    - 로그인 LogIn (Screen)
+    - SignUpScreen (Stack.Navigator)
+        - 회원가입 절차 SignUpStep (Stack.Navigator)
+            - 글자 크기 설정 FontSizeSet (Screen)
+            - 전화번호 인증 PhoneNumberSet (Screen)
+            - 생년월일/성별 입력 BirthDateSet (Screen)
+            - 이름/별명 입력 NameSet (Screen)
+        - FamilyGroupScreen (Stack.Navigator)
+            - 가족그룹 FamilyGroup (Screen)
+            - 가족그룹 추가 FamilyGroupAdd (Stack.Navigator)
+                - 가족 고유번호 입력 FamilyKey (Screen)
+                - 환자와의 관계 입력 Relationship (Screen)
+            - 가족그룹 수정 FamilyGroupEdit (Screen)
+- Main (Tap.Navigator)
+    - FamilyScreen (Stack.Navigator)
+        - 가족 Family (Screen)
+        - 글 상세보기 FamilyPostRead (Screen)
+        - 글 수정하기 FamilyPostEdit (Screen)
+        - 글쓰기 FamilyPostWrite (Screen)
+    - NeighborScreen (Stack.Navigator)
+        - 이웃 Neighbor (Screen)
+        - 글 상세보기 NeighborPostRead (Screen)
+        - 글 수정하기 NeighborPostEdit (Screen)
+        - 글쓰기 NeighborPostWrite (Screen)
+    - HomeScreen (Stack.Navigator)
+        - 홈 Home (Screen)
+        - FamilyGroupScreen (Stack.Navigator)
+    - PatientScreen (Stack.Navigator)
+        - 환자 Patient (Screen)
+        - 활동 내역 PatientActivity (Screen)
+        - 영역별 능력 보기 PatientAnalyze (Screen)
+        - FamilyGroupScreen (Stack.Navigator)
+    - MyPageScreen (Stack.Navigator)
+        - 마이페이지 MyPage (Screen)
+        - 내가 올린/댓글 단/표정 지은 게시글 MyActivityPost (Screen)
+        - VitaminScreen (Stack.Navigator)
+            - 비타민 목록 Vitamin (Screen)
+            - 비타민 안 만든 사진 목록 Album (Screen)
+        - SettingScreen (Stack.Navigator)
+            - Setting (Screen)
+            - 회원정보 수정 ProfileEdit (Screen)
+            - 글자크기 설정 FontSizeEdit (Screen)
+            - 고객센터
+            - 로그아웃
+            - 회원탈퇴
 
-## Step 1: Start the Metro Server
-
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
-
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+레이어 팝업
+- 신고하기 Report
+- 비타민 만들기 VitaminWrite
+- 비타민 수정하기 VitaminEdit
